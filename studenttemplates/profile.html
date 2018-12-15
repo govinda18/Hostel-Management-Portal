@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+      {% load staticfiles %}
+    <title>Profile Page</title>
+
+    <!-- CSS  -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href={% static "css/materialize.css" %} type="text/css" rel="stylesheet">
+    <link href={% static "css/style.css" %} type="text/css" rel="stylesheet">
+    <script>
+        var angle = 0;
+function galleryspin(sign) {
+spinner = document.querySelector("#spinner");
+if (!sign) { angle = angle + 45; } else { angle = angle - 45; }
+spinner.setAttribute("style","-webkit-transform: rotateY("+ angle +"deg); -moz-transform: rotateY("+ angle +"deg); transform: rotateY("+ angle +"deg);");
+}
+ </script>
+
+  </head>
+  <body>
+
+{% include 'student/home_page_navbar.html' %}
+
+
+<div class="container">
+  
+        <div class="row">
+
+        <br><br>
+            <div class="col-md-3">
+                <ul class="nav nav-pills nav-stacked admin-menu" >
+                    <li class="active"><a href="#" data-target-id="profile"><i class="glyphicon glyphicon-user"></i> Profile</a></li>
+                    <li ><a href="/student/changepassword/" data-target-id="change-password"><i class="glyphicon glyphicon-lock"></i> Change Password</a></li>
+                    <!-- <li><a href="" data-target-id="settings"><i class="glyphicon glyphicon-cog"></i> Settings</a></li> -->
+                    <!-- <li><a href="" data-target-id="logout"><i class="glyphicon glyphicon-log-out"></i> Logout</a></li> -->
+                </ul>
+
+
+            </div>
+
+    <!--    <form method="post">
+                {% csrf_token %}
+                {{ form.old_password }}
+
+
+            <button type="submit">Save changes</button>
+ -->        <!-- </form> -->
+
+
+ <div class="col-md-9  admin-content" id="change-password">
+                <form  method="post" action="/student/profile/">
+                        
+                    {% csrf_token %}
+           
+                    <div class="panel panel-info" style="margin: 1em;">
+                        <div class="panel-heading">
+                            <h3 class="panel-title"><label for="new_password" class="control-label panel-title">Name</label></h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="form-group">
+                                <div class="col-sm-10">
+                                     <input type="text" class="form-control" name="name" id="name" value="{{profile.first_name}} {{profile.last_name}}" disabled="true">
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="panel panel-info" style="margin: 1em;">
+                        <div class="panel-heading">
+                            <h3 class="panel-title"><label for="new_password" class="control-label panel-title">Roll Number</label></h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="form-group">
+                                <div class="col-sm-10">
+                                     <input type="text" class="form-control" name="name" id="name" value="{{profile.rollno}} " disabled="true">
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="panel panel-info" style="margin: 1em;">
+                        <div class="panel-heading">
+                            <h3 class="panel-title"><label for="new_password" class="control-label panel-title">Email Id</label></h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="form-group">
+                                <div class="col-sm-10">
+                                     <input type="text" class="form-control" name="name" id="name" value="{{profile.emailid}} " disabled="true">
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="panel panel-info" style="margin: 1em;">
+                        <div class="panel-heading">
+                            <h3 class="panel-title"><label for="new_password" class="control-label panel-title">Department</label></h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="form-group">
+                                <div class="col-sm-10">
+                                     <select type="text" class="form-control" name="dept" id="dept"  >
+                                    <option value="{{profile.branch.id}}" selected="true">{{profile.branch}}</option>
+                                    {% for branch in branches %}
+                                    <option value="{{branch.id}}">{{branch}}</option>
+                                    {% endfor %}
+                                     </select>
+                                    
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="panel panel-info" style="margin: 1em;">
+                        <div class="panel-heading">
+                            <h3 class="panel-title"><label for="new_password" class="control-label panel-title">Year</label></h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="form-group">
+                                <div class="col-sm-10">
+                                     <input type="number" min="1" max="5" class="form-control" name="year" id="year" value={{profile.year}} > 
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="panel panel-info" style="margin: 1em;">
+                        <div class="panel-heading">
+                            <h3 class="panel-title"><label for="new_password" class="control-label panel-title">Hostel</label></h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="form-group">
+                                <div class="col-sm-10">
+                                     <select type="text" class="form-control" name="hostel" id="hostel">
+                                    <option value="{{profile.hostel.id}}" selected="true">{{profile.hostel}}</option>
+                                    {% for hostel in hostels %}
+                                    <option value="{{hostel.id}}">{{hostel}}</option>
+                                    {% endfor %}
+                                     </select>
+                            
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="panel panel-info" style="margin: 1em;">
+                        <div class="panel-heading">
+                            <h3 class="panel-title"><label for="new_password" class="control-label panel-title">Room Number</label></h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="form-group">
+                                <div class="col-sm-10">
+                                     <input type="text" class="form-control" name="room" id="room" value="{{profile.room_no}} " > 
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+             
+
+             
+                    <div class="panel panel-info border" style="margin: 1em;">
+                        <div class="panel-body">
+                            <div class="form-group">
+                                <div class="pull-left">
+                                    <button type="submit" >Save changes</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+
+
+</div>
+</body>
+</html>

@@ -1,0 +1,119 @@
+{% load static from staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Parallax Template - Materialize</title>
+
+<!-- CSS  -->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<!-- Compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+
+
+
+<link href="../../dist/css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+<link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+</head>
+
+<body>
+  {% include 'student/home_page_navbar.html' %}
+<br>
+<div class="container">
+    
+    
+    <div class="section main_table">
+
+        <!--   Icon Section   -->
+        <div class="row">
+            <div class="col s12">
+                <table class="bordered responsive-table">
+                    <thead>
+                        <tr>
+                            <th>Grieviance ID</th>
+                            <th>Subject</th>
+                            <th>Posting Date</th>
+                            <th>Expected Date of Completion</th>
+                            <th>Current Status</th>
+                            <th>Concerned Authority</th>
+                            {% if isadmin %}
+                            <th>Details</th>
+                            {% endif %}
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {% for query in grievances %}
+                        <tr>
+                            <td>{{ query.pk }}</td>
+                            <td>{{ query.subject }}</td>
+                            <td>{{ query.date }}</td>
+                            <td>{{ query.expected_date }}</td>
+                            <td>{{ query.status }}</td>
+                            <td>{{ query.category.authority }}</td>
+                            {% if isadmin %}
+                            <td><a href="/hostel/grievance/{{query.pk}}/"><button>View</button></a></td>
+                            {% endif %}
+
+                        </tr>
+                        {% endfor %}
+
+                        
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+    </div>
+    
+</div>
+
+
+
+
+
+
+<footer class="page-footer ">
+    <div class="container">
+    <!-- <div class="row">
+      <div class="col s12 m4 footer-first-tab">
+        <img src={% static "images/iitbhu-logo.png" %} height="50">
+        <p class="grey-text text-lighten-4">We are a team of college students working on this project like it's our full time job. Any amount would help support and continue development on this project and is greatly appreciated.</p>
+      </div>
+      <div class="col s12 m4">
+        <h5 class="white-text" style="text-align:center;">Emergency Contacts</h5>
+        <p class="grey-text text-lighten-4">
+
+        </p>
+      </div>
+      <div class="col s12 m4">
+        <h5 class="white-text" style="text-align:center;">Important Links</h5>
+        <p class="grey-text text-lighten-4">
+
+        </p>
+      </div>
+  </div> -->
+  <div class="footer-line">Design and Developed by the Team Hostel Portal, IIT (BHU) Varanasi | All rights reserved &copy; 2018</div>
+
+</footer>
+
+
+<!--  Scripts-->
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="../../dist/js/materialize.js"></script>
+<script src="js/init.js"></script>
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+    $('select').material_select();
+});
+
+</script>
+
+</body>
+</html>
+

@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  {% load staticfiles %}
+  <title>IIT BHU - Hostel Portal</title>
+
+</head>
+<body>
+  <button onclick="topFunction()" id="myBtn" title="Go to top"><i class="fa fa-arrow-up" aria-hidden="true"></i></button>
+
+  <br>
+<div id="myCarousel" class="carousel slide " style="margin-left: 2%;margin-right: 2%;margin-bottom: 20%" data-ride="carousel">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+    <li data-target="#myCarousel" data-slide-to="1"></li>
+    <li data-target="#myCarousel" data-slide-to="2"></li>
+    <li data-target="#myCarousel" data-slide-to="3"></li>
+  </ol>
+
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner" role="listbox">
+      <div class="item active">
+      <img class="img img-responsive" src='https://qph.fs.quoracdn.net/main-qimg-8e4d8a94ce909bd527ad7c72ab3411a5-c'  alt="Vrindavan Bhawan ">
+    </div>
+    <div class="item ">
+      <img class="img img-responsive" src="{% static 'ui/res/biet/saket.jpg' %}" alt="Saket Bhawan">
+    </div>
+
+
+
+    <div class="item">
+      <img class="img img-responsive" src="{% static 'ui/res/biet/kalpana.jpg' %} " alt="Kalpana">
+    </div>
+
+    <div class="item">
+      <img class="img img-responsive" src="{% static 'ui/res/biet/jaibharat.jpg' %}" alt="Jaibharat">
+    </div>
+  </div>
+
+  <!-- Left and right controls -->
+  <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+<div class="panel panel-default " style="margin-left: 2%;margin-right: 2% ;margin-top: -18%">
+          <div class="panel panel-heading" style="background-color:#ee6e73; color:#FFF;">&nbsp;Hostel Management System</div>
+
+
+              <div class="panel panel-body" style="background-color:rgba(128, 128, 128, 0.08);">
+                <div class="container-fluid">
+
+
+                    <div class="row">
+                    <!-------post----->
+                      <div class="col-md-12">
+
+                              <p>Hostel management is an essential feature in both large and small institutions. Hostel management involves efficiently managing several aspects of the entire residential facility and reducing staff and manual work.
+                                                                The hostel management system has been created to help the college or school staff and the student to easily register and use the facilities while keeping track of their activities within the premises.
+                                                                The hostel management system consists of various modules that begin with the registration .</p>
+
+                      </div>
+
+                    </div>
+                </div>
+
+
+        </div>
+
+
+  </div>
+<div style="margin-left: 2%;margin-right: 2%" >
+
+     <div class="panel panel-default col-sm-4" >
+          <div class="panel panel-heading " style="background-color:#ee6e73; color:#FFF;">&nbsp;Latest Information And Notices</div>
+
+
+              <div class="panel panel-body" style="background-color:rgba(128, 128, 128, 0.08);">
+                <div class="container-fluid">
+
+
+                    <div class="row">
+                    <!-------post----->
+                      <div class="col-md-12" style="margin-left: 10px; " >
+                              <p style="height:226px ;overflow-y:scroll">
+ {%  for list  in notifications %}
+<a href="{{list.link}}" target="_blank">{{list.message}}</a><br>
+{% endfor %}
+  </p>    </div>
+
+                    </div>
+                </div>
+
+
+        </div>
+
+
+  </div>
+
+    <div class="panel panel-default col-sm-4" >
+          <div class="panel panel-heading " style="background-color:#ee6e73; color:#FFF;">&nbsp;Links</div>
+
+
+              <div class="panel panel-body" style="background-color:rgba(128, 128, 128, 0.08);">
+                <div class="container-fluid">
+
+
+                    <div class="row">
+                    <!-------post----->
+                      <div class="col-md-12 " >
+
+<div style="height:236px;">
+    <span class="glyphicon glyphicon-hand-right"> <a style="color: black" href="/api"> API For Accessing The Content</a></span><br><br>
+    <span class="glyphicon glyphicon-hand-right"> <a   style="color: black" href="http://playstore.com"> Our Android App </a></span><br><br>
+
+    <span class="glyphicon glyphicon-hand-right"> <a  style="color: black"  href="/ui/login"> Search Student </a></span><br><br>
+    <span class="glyphicon glyphicon-hand-right"> <a  style="color: black"  href="/ui/login"> View Api Postman Documentation </a></span><br><br>
+    <span class="glyphicon glyphicon-hand-right"> <a  style="color: black"  href="/ui/login"> Hostel Information </a></span><br><br>
+    <span class="glyphicon glyphicon-hand-right"> <a  style="color: black"  href="/ui/login"> Search Blood Group </a></span><br><br>
+
+
+
+</div>
+
+
+                      </div>
+
+                    </div>
+                </div>
+
+
+        </div>
+
+
+  </div>
+    <div style=""class="panel panel-default col-sm-4" >
+          <div class="panel panel-heading" style="background-color:#ee6e73; color:#FFF;">&nbsp;Our Aim</div>
+
+
+              <div class="panel panel-body" style="background-color:rgba(128, 128, 128, 0.08);">
+                <div class="container-fluid">
+
+
+                    <div class="row">
+                    <!-------post----->
+                      <div class="col-md-12">
+<div style="height:215px;">
+<h3>Aim</h3>
+<p>We aim to provide a platform for the student ,faculty,and others in need to fully utitlize all the features
+of this Website And Have a fruitfull Communication with the student that you wanna interact.
+</p>
+
+</div>
+
+
+                      </div>
+
+                    </div>
+                </div>
+
+
+        </div>
+
+
+  </div>
+
+</div>
+
+<div style="margin-left: 2%;margin-right: 2%" >
+
+     <div class="panel panel-default " >
+          <div class="panel panel-heading " style="background-color:#ee6e73; color:#FFF;">&nbsp;Our Hostels</div>
+
+
+              <div class="panel panel-body" style="background-color:rgba(128, 128, 128, 0.08);" id="hostel_section">
+                <div class="container-fluid">
+                  <div class="row">
+                    {% for hostel in hostels %}
+                    <a href="/hostel/{{hostel.id}}">
+                    <div class="col-sm-4">
+                    <h5>{{hostel.hostel_name}}</h5>  
+                    <img src="{{hostel.hostel_image1.url}}" style="width: 180px;height: 180px;">
+                    </div>
+                    </a>
+                    {% endfor %}
+                  </div>
+
+                </div>
+
+
+        </div>
+
+
+  </div>
+
+
+</div>
+
+
+
+
+
+</body>
+</html>
+
+<!-- <h3 id="not">Contact Us</h3>
+ -->      <!-- <div class="row">
+        <div class="col lg6 s9 m7 contact">
+          <div class="card">
+            <div class="card-image">
+              <img src="https://preview.ibb.co/kftLH7/background3.jpg"  width="100px">
+
+            </div>
+            <div class="card-content">
+              <p class="name"><strong>Dr. Senthil Raja A</strong></p>
+              <p>Department: BioMedical Engineering</p>
+              <p>Contact: 9678074521</p>
+              <p>Dept. Phone: 2527</p>
+              <p>HAB Phone No.: 2164</p>
+            </div>
+            <div class="card-action">
+              <a href="#">This is a link</a>
+            </div>
+          </div>
+        </div>
+
+
+
+                <div class="col lg6 s12 m7 contact">
+          <div class="card">
+            <div class="card-image">
+              <img src="https://preview.ibb.co/kftLH7/background3.jpg">
+
+            </div>
+            <div class="card-content">
+              <p class="name"><strong>Dr. Senthil Raja A</strong></p>
+              <p>Department: BioMedical Engineering</p>
+              <p>Contact: 9678074521</p>
+              <p>Dept. Phone: 2527</p>
+              <p>HAB Phone No.: 2164</p>
+            </div>
+            <div class="card-action">
+              <a href="#">This is a link</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+            <div class="row">
+        <div class="col lg6 s12 m7 contact">
+          <div class="card">
+            <div class="card-image">
+              <img src="https://preview.ibb.co/kftLH7/background3.jpg">
+
+            </div>
+            <div class="card-content">
+              <p class="name"><strong>Dr. Senthil Raja A</strong></p>
+              <p>Department: BioMedical Engineering</p>
+              <p>Contact: 9678074521</p>
+              <p>Dept. Phone: 2527</p>
+              <p>HAB Phone No.: 2164</p>
+            </div>
+            <div class="card-action">
+              <a href="#">This is a link</a>
+            </div>
+          </div>
+        </div>
+
+                <div class="col lg6 s12 m7 contact">
+          <div class="card">
+            <div class="card-image">
+              <img src="https://preview.ibb.co/kftLH7/background3.jpg">
+
+            </div>
+            <div class="card-content">
+              <p class="name"><strong>Dr. Senthil Raja A</strong></p>
+              <p>Department: BioMedical Engineering</p>
+              <p>Contact: 9678074521</p>
+              <p>Dept. Phone: 2527</p>
+              <p>HAB Phone No.: 2164</p>
+            </div>
+            <div class="card-action">
+              <a href="#">This is a link</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="row">
+        <div class="col lg6 s12 m7 contact">
+          <div class="card">
+            <div class="card-image">
+              <img src="https://preview.ibb.co/kftLH7/background3.jpg">
+
+            </div>
+            <div class="card-content">
+              <p class="name"><strong>Dr. Senthil Raja A</strong></p>
+              <p>Department: BioMedical Engineering</p>
+              <p>Contact: 9678074521</p>
+              <p>Dept. Phone: 2527</p>
+              <p>HAB Phone No.: 2164</p>
+            </div>
+            <div class="card-action">
+              <a href="#">This is a link</a>
+            </div>
+          </div>
+        </div>
+
+                <div class="col lg6 s12 m7 contact">
+          <div class="card">
+            <div class="card-image">
+              <img src="https://preview.ibb.co/kftLH7/background3.jpg">
+
+            </div>
+            <div class="card-content">
+              <p class="name"><strong>Dr. Senthil Raja A</strong></p>
+              <p>Department: BioMedical Engineering</p>
+              <p>Contact: 9678074521</p>
+              <p>Dept. Phone: 2527</p>
+              <p>HAB Phone No.: 2164</p>
+            </div>
+            <div class="card-action">
+              <a href="#">This is a link</a>
+            </div>
+          </div>
+        </div>
+      </div> -->
+
+
+
+  <footer class="page-footer teal foot">
+    <div class="container">
+      <div class="row">
+          <h6><center>&copy; Hostel Committee, IIT (BHU), Varanasi</center></h6>  
+      </div>
+    </div>
+  </footer>
+
+
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="js/materialize.js"></script>
+  <script src="js/init.js"></script>
+  <script src="js/hover.js"></script>
+  <script>
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        document.getElementById("myBtn").style.display = "block";
+    } else {
+        document.getElementById("myBtn").style.display = "none";
+    }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+}
+</script>
+  </body>
+</html>

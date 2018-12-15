@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+      {% load staticfiles %}
+    <title>Grievance Detail</title>
+
+  </head>
+  <body>
+
+{% include 'student/home_page_navbar.html' %}
+
+
+<div class="container">
+  
+        <div class="row">
+
+        <br><br>
+            <div class="col-md-3">
+                <ul class="nav nav-pills nav-stacked admin-menu" >
+                    <li class="active"><a href="#" data-target-id="profile"><i class="glyphicon glyphicon-user"></i> Grievance Detail</a></li
+                </ul>
+
+
+            </div>
+
+    <!--    <form method="post">
+                {% csrf_token %}
+                {{ form.old_password }}
+
+
+            <button type="submit">Save changes</button>
+ -->        <!-- </form> -->
+
+
+ <div class="col-md-9  admin-content" id="change-password">
+                <form  method="post" action="/hostel/grievance/{{grievance.id}}/">
+                        
+                    {% csrf_token %}
+           
+                    <div class="panel panel-info" style="margin: 1em;">
+                        <div class="panel-heading">
+                            <h3 class="panel-title"><label for="new_password" class="control-label panel-title">Student Name</label></h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="form-group">
+                                <div class="col-sm-10">
+                                     <input type="text" class="form-control" name="name" id="name" value="{{profile.first_name}} {{profile.last_name}}" disabled="true">
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="panel panel-info" style="margin: 1em;">
+                        <div class="panel-heading">
+                            <h3 class="panel-title"><label for="new_password" class="control-label panel-title">Roll Number</label></h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="form-group">
+                                <div class="col-sm-10">
+                                     <input type="text" class="form-control" name="name" id="name" value="{{profile.rollno}} " disabled="true">
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="panel panel-info" style="margin: 1em;">
+                        <div class="panel-heading">
+                            <h3 class="panel-title"><label for="new_password" class="control-label panel-title">Email Id</label></h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="form-group">
+                                <div class="col-sm-10">
+                                     <input type="text" class="form-control" name="name" id="name" value="{{profile.emailid}} " disabled="true">
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="panel panel-info" style="margin: 1em;">
+                        <div class="panel-heading">
+                            <h3 class="panel-title"><label for="new_password" class="control-label panel-title">Category</label></h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="form-group">
+                                <div class="col-sm-10">
+                                     <input type="text" class="form-control" name="name" id="name" value="{{ grievance.category }} " disabled="true">
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="panel panel-info" style="margin: 1em;">
+                        <div class="panel-heading">
+                            <h3 class="panel-title"><label for="new_password" class="control-label panel-title">Subject</label></h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="form-group">
+                                <div class="col-sm-10">
+                                     <input type="text" class="form-control" name="name" id="name" value="{{grievance.subject}} " disabled="true">
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="panel panel-info" style="margin: 1em;">
+                        <div class="panel-heading">
+                            <h3 class="panel-title"><label for="new_password" class="control-label panel-title">Date</label></h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="form-group">
+                                <div class="col-sm-10">
+                                     <input type="text" class="form-control" name="name" id="name" value="{{grievance.date}} " disabled="true">
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="panel panel-info" style="margin: 1em;">
+                        <div class="panel-heading">
+                            <h3 class="panel-title"><label for="new_password" class="control-label panel-title">Description</label></h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="form-group">
+                                <div class="col-sm-10">
+                                     <input type="text" class="form-control" name="name" id="name" value="{{grievance.description}} " disabled="true">
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="panel panel-info" style="margin: 1em;">
+                        <div class="panel-heading">
+                            <h3 class="panel-title"><label for="new_password" class="control-label panel-title">Expected Date</label></h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="form-group">
+                                <div class="col-sm-10">
+                                     <input type="date" class="form-control" name="expected_date" id="expected_date" value="{{grievance.expected_date}} ">
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="panel panel-info" style="margin: 1em;">
+                        <div class="panel-heading">
+                            <h3 class="panel-title"><label for="new_password" class="control-label panel-title">Status</label></h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="form-group">
+                                <div class="col-sm-10">
+                                     <select type="text" class="form-control" name="status" id="status">
+                                        <option value="{{grievance.status}}">{{grievance.status}}</option>
+                                        <option value="Pending">Pending</option>
+                                        <option value="Seen">Seen</option>
+                                        <option value="Reported">Reported</option>
+                                        <option value="Solved">Solved</option>
+                                     </select>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+             
+
+             
+                    <div class="panel panel-info border" style="margin: 1em;">
+                        <div class="panel-body">
+                            <div class="form-group">
+                                <div class="pull-left">
+                                    <button type="submit" >Save changes</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+
+
+</div>
+</body>
+</html>

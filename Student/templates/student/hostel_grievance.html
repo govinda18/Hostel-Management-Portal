@@ -1,0 +1,180 @@
+
+
+{% load static from staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Parallax Template - Materialize</title>
+
+<!-- CSS  -->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<!-- Compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+
+
+
+<link href="../../dist/css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+<link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+</head>
+<body>
+<nav class="top-nav" role="navigation">
+    <div class="nav-wrapper container">
+        <img src={% static "images/iitbhu-logo.png" %} height="50">
+        <!-- <a id="logo-container" href="#" class="brand-logo">IIT (BHU) Varanasi</a> -->
+        <ul class="right hide-on-med-and-down">
+            <li><a href="#notification">Notification</a></li>
+            <li><a href="https://drive.google.com/file/d/0B11jnltBT3TFYzRKbjJXYUcwM2ctQld1TkFvZ2FGZTBPaTRr/view?usp=sharing">Rooms</a></li>
+            <li><a href="https://drive.google.com/file/d/0B081mTQyGdy5VHVyRnVsMm5xWXMyS1RQSXFONlUzeXZUb29B/view?usp=sharing">Council</a></li>
+            <li><a href="#">Hostels</a></li>
+            <li><a href="#">Login</a></li>
+        </ul>
+
+        <ul id="slide-out" class="side-nav">
+            <li><a href="#notification">Notification</a></li>
+            <li><a href="https://drive.google.com/file/d/0B11jnltBT3TFYzRKbjJXYUcwM2ctQld1TkFvZ2FGZTBPaTRr/view?usp=sharing">Rooms</a></li>
+            <li><a href="https://drive.google.com/file/d/0B081mTQyGdy5VHVyRnVsMm5xWXMyS1RQSXFONlUzeXZUb29B/view?usp=sharing">Council</a></li>
+            <li><a href="#">Hostels</a></li>
+            <li><a href="#">Login</a></li>
+
+
+        </ul>
+        <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
+    </div>
+</nav>
+
+
+<div class="container">
+    
+    
+    <div class="section main_table">
+
+        <!--   Icon Section   -->
+        <div class="row">
+            <div class="col s12">
+                <table class="bordered responsive-table">
+    <tr>
+        <th>Status</th>
+        <th>Subject</th>
+        <th>Category</th>
+        <th>Description</th>
+        <th>Expected Date</th>
+        <th>Update</th>
+
+    </tr>
+    <form>
+    <tr>
+        <td>test</td>
+        <td>test</td>
+        <td>test</td>
+        <td>test</td>
+        <td>                        <button class="btn waves-effect waves-light center-align" type="submit" name="action">Submit
+                            <i class="material-icons right">send</i>
+                        </button></td>
+        <td>test</td>
+    </tr>
+    </form>
+    {% for entry in list %}
+    <tr>
+        <td><a href={% url 'student:hostel_grievances_one' %}>Update</a> </td>
+        <td>{{ entry.subject }}</td>
+        <td>{{ entry.category }}</td>
+        <td>{{ entry.description }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+            </div>
+
+        </div>
+
+    </div>
+    
+</div>
+
+
+
+
+
+
+<footer class="page-footer ">
+    <div class="container">
+    <!-- <div class="row">
+      <div class="col s12 m4 footer-first-tab">
+        <img src={% static "images/iitbhu-logo.png" %} height="50">
+        <p class="grey-text text-lighten-4">We are a team of college students working on this project like it's our full time job. Any amount would help support and continue development on this project and is greatly appreciated.</p>
+      </div>
+      <div class="col s12 m4">
+        <h5 class="white-text" style="text-align:center;">Emergency Contacts</h5>
+        <p class="grey-text text-lighten-4">
+
+        </p>
+      </div>
+      <div class="col s12 m4">
+        <h5 class="white-text" style="text-align:center;">Important Links</h5>
+        <p class="grey-text text-lighten-4">
+
+        </p>
+      </div>
+  </div> -->
+  <div class="footer-line">Design and Developed by the Team Hostel Portal, IIT (BHU) Varanasi | All rights reserved &copy; 2018</div>
+
+</footer>
+
+
+<!--  Scripts-->
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="../../dist/js/materialize.js"></script>
+<script src="js/init.js"></script>
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+    $('select').material_select();
+});
+
+</script>
+
+</body>
+</html>
+
+<!-- Footer -->
+<footer class="page-footer font-small stylish-color-dark pt-4" style="background-color: #ee6e73; color: #FFF">
+
+    
+    <!-- Call to action -->
+    <ul class="list-unstyled list-inline text-center py-2">
+      <li class="list-inline-item">
+        <h5 class="mb-1">Designed by Club of Programmers, IIT (BHU), Varanasi</h5>
+      </li>
+    </ul>
+
+    <!-- Social buttons -->
+    <ul class="list-unstyled list-inline text-center">
+      <li class="list-inline-item">
+        <a href="http://www.copsiitbhu.co.in/" target="_blank" class="btn-floating btn-fb mx-1">
+          <i class="fa fa-link"> </i>
+        </a>
+      </li>
+      <li class="list-inline-item">
+        <a href="http://www.facebook.com/cops.iitbhu/" target="_blank" class="btn-floating btn-tw mx-1">
+          <i class="fa fa-facebook"> </i>
+        </a>
+      </li>
+      <li class="list-inline-item">
+        <a href="#" class="btn-floating btn-gplus mx-1">
+          <i class="fa fa-google-plus"> </i>
+        </a>
+      </li>
+    </ul>
+    <!-- Social buttons -->
+
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3">© 2018 Copyright:
+      Hostel Committee, IIT (BHU), Varanasi
+    </div>
+    <!-- Copyright -->
+
+</footer>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<head>
+{% load staticfiles %}
+<title>Add Grievance</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<style type="text/css">
+    .login-form {
+        width: 340px;
+        margin: 50px auto;
+    }
+    .login-form form {
+        margin-bottom: 15px;
+        background: #f7f7f7;
+        box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+        padding: 30px;
+    }
+    .login-form h2 {
+        margin: 0 0 15px;
+    }
+    .form-control, .btn {
+        min-height: 38px;
+        border-radius: 2px;
+    }
+    .btn {        
+        font-size: 15px;
+        font-weight: bold;
+    }
+</style>
+    
+
+ <!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+  {% include 'student/home_page_navbar.html' %}
+<br>
+{% block body %}
+<div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12 col-md-7">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <form class="login-form" action="/student/addgrievance/" method="post">
+                        {% csrf_token %}
+                            <h4> Grievance Form </h4>
+                            <div class="form-group">
+                                    <label class="control-label ">Hostel</label>
+                              <select name="form-hostel" placeholder="Hostel" class="form-hostel form-control" id="form-hostel">
+                                <!-- Add Hostels in sirted order for type search to work -->
+                                {% for i in hostels %}
+                                <option value="{{ i.id }}">{{ i }}</option>
+                                {% endfor %}
+                              </select>
+                            </div>
+                            <div class="form-group">
+                                    <label class="control-label ">Category</label>
+                              <select name="form-category" placeholder="Category" class="form-hostel form-control" id="form-category">
+                                <!-- Add Hostels in sirted order for type search to work -->
+                                {% for i in categories %}
+                                <option value="{{ i.id }}">{{ i }}</option>
+                                {% endfor %}
+                              </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label ">Subject</label>
+                                <input type="text" name="form-subject" placeholder="Subject" class="form-first-name form-control" id="form-subject">
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label ">Description</label>
+                                <textarea maxlength="1000" rows="10" type="text" name="form-desc"  placeholder="Please give a detailed description here" class="form-last-name form-control" id="form-desc"></textarea>
+                            </div>
+                                <br>
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <button type="submit" class="btn btn-success">Submit</button>
+                                </div>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+</div>
+
+</body>
+{% endblock %}
+<!-- Footer -->
+<footer class="page-footer font-small stylish-color-dark pt-4" style="background-color: #ee6e73; color: #FFF">
+
+    
+    <!-- Call to action -->
+    <ul class="list-unstyled list-inline text-center py-2">
+      <li class="list-inline-item">
+        <h5 class="mb-1">Designed by Club of Programmers, IIT (BHU), Varanasi</h5>
+      </li>
+    </ul>
+
+    <!-- Social buttons -->
+    <ul class="list-unstyled list-inline text-center">
+      <li class="list-inline-item">
+        <a href="http://www.copsiitbhu.co.in/" target="_blank" class="btn-floating btn-fb mx-1">
+          <i class="fa fa-link"> </i>
+        </a>
+      </li>
+      <li class="list-inline-item">
+        <a href="http://www.facebook.com/cops.iitbhu/" target="_blank" class="btn-floating btn-tw mx-1">
+          <i class="fa fa-facebook"> </i>
+        </a>
+      </li>
+      <li class="list-inline-item">
+        <a href="#" class="btn-floating btn-gplus mx-1">
+          <i class="fa fa-google-plus"> </i>
+        </a>
+      </li>
+    </ul>
+    <!-- Social buttons -->
+
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3">© 2018 Copyright:
+      Hostel Committee, IIT (BHU), Varanasi
+    </div>
+    <!-- Copyright -->
+
+</footer>

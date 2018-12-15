@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<head>
+{% load staticfiles %}
+<title>Add Notifcation</title>
+<style type="text/css">
+    .login-form {
+        width: 340px;
+        margin: 50px auto;
+    }
+    .login-form form {
+        margin-bottom: 15px;
+        background: #f7f7f7;
+        box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+        padding: 30px;
+    }
+    .login-form h2 {
+        margin: 0 0 15px;
+    }
+    .form-control, .btn {
+        min-height: 38px;
+        border-radius: 2px;
+    }
+    .btn {        
+        font-size: 15px;
+        font-weight: bold;
+    }
+</style>
+</head>
+<body>
+
+{% include 'student/home_page_navbar.html' %}
+<br>
+<div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12 col-md-7">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <form class="login-form" action= "/hostel/addnotification/" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                            <h4>Add Notification for {{hostel.hostel_name}}</h4>
+                            <div class="form-group">
+                                <label class="form-group">Link</label>
+                                <input type="text" name="form-link" placeholder="Link for notification..." class="form-username form-control" id="form-link" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-group">Title</label>
+                                <input type="text" name="form-message" placeholder="Title of Notification ..." class="form-password form-control" id="form-message" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <button type="submit" class="btn btn-success">Submit</button>
+                                </div>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+</div>
+
+</body>
+<!-- Footer -->
+<footer class="page-footer font-small stylish-color-dark pt-4" style="background-color: #ee6e73; color: #FFF">
+
+    
+    <!-- Call to action -->
+    <ul class="list-unstyled list-inline text-center py-2">
+      <li class="list-inline-item">
+        <h5 class="mb-1">Designed by Club of Programmers, IIT (BHU), Varanasi</h5>
+      </li>
+    </ul>
+
+    <!-- Social buttons -->
+    <ul class="list-unstyled list-inline text-center">
+      <li class="list-inline-item">
+        <a href="http://www.copsiitbhu.co.in/" target="_blank" class="btn-floating btn-fb mx-1">
+          <i class="fa fa-link"> </i>
+        </a>
+      </li>
+      <li class="list-inline-item">
+        <a href="http://www.facebook.com/cops.iitbhu/" target="_blank" class="btn-floating btn-tw mx-1">
+          <i class="fa fa-facebook"> </i>
+        </a>
+      </li>
+      <li class="list-inline-item">
+        <a href="#" class="btn-floating btn-gplus mx-1">
+          <i class="fa fa-google-plus"> </i>
+        </a>
+      </li>
+    </ul>
+    <!-- Social buttons -->
+
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3">© 2018 Copyright:
+      Hostel Committee, IIT (BHU), Varanasi
+    </div>
+    <!-- Copyright -->
+
+</footer>

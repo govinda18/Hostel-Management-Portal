@@ -1,0 +1,12 @@
+{% for field in form %}
+    <div class="row">
+    	
+        <div class="input-field col s12 l8 m8 offset-l2" id={{ forloop.counter }}  >
+        	{{field}}
+
+        	<label  for={{ forloop.counter }}>{{field.label_tag}}</label>
+        </div>
+        
+        
+    </div>
+{% endfor %}

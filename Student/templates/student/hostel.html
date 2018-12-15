@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  {% load staticfiles %}
+  <title>Hostel - {{hostel.hostel_name}}</title>
+  <style type="text/css">
+ html {
+  scroll-behavior: smooth;
+}
+#myBtn {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  z-index: 99;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  background-color: black;
+  color: white;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 4px;
+}
+
+#myBtn:hover {
+  background-color: #555;
+}
+  </style>
+
+
+</head>
+<body>
+  <button onclick="topFunction()" id="myBtn" title="Go to top"><i class="fa fa-arrow-up" aria-hidden="true"></i></button>
+  {% include 'student/home_page_navbar.html' %}
+  <br>
+<div id="myCarousel" class="carousel slide " style="margin-left: 2%;margin-right: 2%;margin-bottom: 20%" data-ride="carousel">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+    <li data-target="#myCarousel" data-slide-to="1"></li>
+    <li data-target="#myCarousel" data-slide-to="2"></li>
+  </ol>
+
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner" role="listbox">
+      <div class="item active">
+      <img class="img img-responsive" src='{{hostel.hostel_image1.url}}'  alt="Vrindavan Bhawan ">
+    </div>
+    <div class="item ">
+      <img class="img img-responsive" src="{{hostel.hostel_image2.url}}" alt="Saket Bhawan">
+    </div>
+
+
+
+    <div class="item">
+      <img class="img img-responsive" src="{{hostel.hostel_image3.url}} " alt="Kalpana">
+    </div>
+
+  </div>
+
+  <!-- Left and right controls -->
+  <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+<div class="panel panel-default " style="margin-left: 2%;margin-right: 2% ;margin-top: -18%">
+          
+
+
+              <div class="panel panel-body" style="background-color:rgba(128, 128, 128, 0.08);">
+                <div class="container-fluid">
+
+
+                    <div class="row">
+                    <!-------post----->
+                      <div class="col-md-12">
+                        <center><h4>{{hostel.hostel_name}}</h4></center>
+                      </div>
+
+                    </div>
+                </div>
+
+
+        </div>
+
+
+  </div>
+<div style="margin-left: 2%;margin-right: 2%" >
+
+     <div class="panel panel-default col-sm-4" >
+          <div class="panel panel-heading " style="background-color:#ee6e73; color:#FFF;">&nbsp;Notofications </div>
+
+
+              <div class="panel panel-body" style="background-color:rgba(128, 128, 128, 0.08);">
+                <div class="container-fluid">
+
+
+                    <div class="row">
+                    <!-------post----->
+                    <div class="col-md-12" style="margin-left: 10px; " >
+                              <p style="height:226px ;overflow-y:scroll">
+                    
+                     {%  for list  in notifications %}
+                    <a href="{{list.link}}" target="_blank">{{list.message}}</a><br>
+                    {% endfor %}
+                      </p>    </div>
+                    </div>
+                </div>
+
+
+        </div>
+
+
+  </div>
+
+    <div class="panel panel-default col-sm-4" >
+          <div class="panel panel-heading " style="background-color:#ee6e73; color:#FFF;">&nbsp;Database</div>
+
+
+              <div class="panel panel-body" style="background-color:rgba(128, 128, 128, 0.08);">
+                <div class="container-fluid">
+
+
+                    <div class="row">
+                    <!-------post----->
+                      <div class="col-md-12 " >
+
+<div style="height:236px;overflow-y:scroll">
+    {% if hostel.student_list %}
+    <span class="glyphicon glyphicon-hand-right"> <a target="_blank" style="color: black" href="{{hostel.student_list}}"> Student List</a></span><br><br>
+    {% endif %}
+    {% if hostel.mess_bill_link %}
+    <span class="glyphicon glyphicon-hand-right"> <a target="_blank" style="color: black" href="{{hostel.mess_bill_link}}"> Mess Bills</a></span><br><br>
+    {% endif %}
+    {% if hostel.HEC %}
+    <span class="glyphicon glyphicon-hand-right"> <a target="_blank" style="color: black" href="{{hostel.HEC}}"> Hostel Election Committee</a></span><br><br>
+    {% endif %}
+    {% if hostel.wardens %}
+    <span class="glyphicon glyphicon-hand-right"> <a target="_blank" style="color: black" href="{{hostel.wardens}}"> Warden Contacts</a></span><br><br>
+    {% endif %}
+    {% if hostel.care_takers %}
+    <span class="glyphicon glyphicon-hand-right"> <a target="_blank" style="color: black" href="{{hostel.care_takers}}"> Care Takers Contacts</a></span><br><br>
+    {% endif %}
+    {% if hostel.maintainance_workers %}
+    <span class="glyphicon glyphicon-hand-right"> <a target="_blank" style="color: black" href="{{hostel.maintainance_workers}}"> Maintainance Workers Contacts</a></span><br><br>
+    {% endif %}
+    {% if hostel.duties_of_hec %}
+    <span class="glyphicon glyphicon-hand-right"> <a target="_blank" style="color: black" href="{{hostel.duties_of_hec}}"> HEC Duties</a></span><br><br>
+    {% endif %}
+
+
+
+</div>
+
+
+                      </div>
+
+                    </div>
+                </div>
+
+
+        </div>
+
+
+  </div>
+    <div style=""class="panel panel-default col-sm-4" >
+          <div class="panel panel-heading" style="background-color:#ee6e73; color:#FFF;">&nbsp;Hostel Information</div>
+
+
+              <div class="panel panel-body" style="background-color:rgba(128, 128, 128, 0.08);">
+                <div class="container-fluid">
+
+
+                    <div class="row">
+                    <!-------post----->
+                      <div class="col-md-12">
+<div style="height:215px;">
+<h3>{{hostel.hostel_name}}</h3>
+<ul>
+  <li>
+    <i class="fa fa-hand-o-right"></i>   <b>Location</b>  - <a target="_blank" href="{{hostel.location}}"> Map link</a>
+  </li>
+  <li>
+    <i class="fa fa-hand-o-right"></i>   <b>Number of rooms</b>  -  {{hostel.rooms}}
+  </li>
+  <li>
+    <i class="fa fa-hand-o-right"></i>   <b>Number of Students</b>  -  {{hostel.number_of_students}}
+    </li>
+    <li>
+    {% if hostel.mess1_maharaj_name %}
+    <i class="fa fa-hand-o-right"></i>   <b>Mess 1</b>  -  {{hostel.mess1_maharaj_name}}
+    {% endif %}
+</li>
+<li>
+    {% if hostel.mess2_maharaj_name %}
+    <i class="fa fa-hand-o-right"></i>   <b>Mess 2</b>  -  {{hostel.mess2_maharaj_name}}
+    {% endif %}
+</li>
+<li>
+    {% if hostel.mess3_maharaj_name %}
+    <i class="fa fa-hand-o-right"></i>   <b>Mess 3</b>  -  {{hostel.mess3_maharaj_name}}
+    {% endif %}
+    </li>
+</ul>
+
+</div>
+
+
+                      </div>
+
+                    </div>
+                </div>
+
+
+        </div>
+
+
+  </div>
+
+</div>
+
+<div style="margin-left: 2%;margin-right: 2%" >
+
+     <div class="panel panel-default " >
+
+
+              <div class="panel panel-body" style="background-color:rgba(128, 128, 128, 0.08);" id="hostel_section">
+                <div class="container-fluid">
+                  <div class="row">
+                    {% for hostel in hostels %}
+                    <a href="/hostel/{{hostel.id}}">
+                    <div class="col-sm-4">
+                    <h5>{{hostel.hostel_name}}</h5>  
+                    <img src="{{hostel.hostel_image1.url}}" style="width: 180px;height: 180px;">
+                    </div>
+                    </a>
+                    {% endfor %}
+                  </div>
+
+                </div>
+
+
+        </div>
+
+
+  </div>
+
+
+</div>
+
+
+
+
+
+</body>
+</html>
+
+<!-- <h3 id="not">Contact Us</h3>
+ -->      <!-- <div class="row">
+        <div class="col lg6 s9 m7 contact">
+          <div class="card">
+            <div class="card-image">
+              <img src="https://preview.ibb.co/kftLH7/background3.jpg"  width="100px">
+
+            </div>
+            <div class="card-content">
+              <p class="name"><strong>Dr. Senthil Raja A</strong></p>
+              <p>Department: BioMedical Engineering</p>
+              <p>Contact: 9678074521</p>
+              <p>Dept. Phone: 2527</p>
+              <p>HAB Phone No.: 2164</p>
+            </div>
+            <div class="card-action">
+              <a href="#">This is a link</a>
+            </div>
+          </div>
+        </div>
+
+
+
+                <div class="col lg6 s12 m7 contact">
+          <div class="card">
+            <div class="card-image">
+              <img src="https://preview.ibb.co/kftLH7/background3.jpg">
+
+            </div>
+            <div class="card-content">
+              <p class="name"><strong>Dr. Senthil Raja A</strong></p>
+              <p>Department: BioMedical Engineering</p>
+              <p>Contact: 9678074521</p>
+              <p>Dept. Phone: 2527</p>
+              <p>HAB Phone No.: 2164</p>
+            </div>
+            <div class="card-action">
+              <a href="#">This is a link</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+            <div class="row">
+        <div class="col lg6 s12 m7 contact">
+          <div class="card">
+            <div class="card-image">
+              <img src="https://preview.ibb.co/kftLH7/background3.jpg">
+
+            </div>
+            <div class="card-content">
+              <p class="name"><strong>Dr. Senthil Raja A</strong></p>
+              <p>Department: BioMedical Engineering</p>
+              <p>Contact: 9678074521</p>
+              <p>Dept. Phone: 2527</p>
+              <p>HAB Phone No.: 2164</p>
+            </div>
+            <div class="card-action">
+              <a href="#">This is a link</a>
+            </div>
+          </div>
+        </div>
+
+                <div class="col lg6 s12 m7 contact">
+          <div class="card">
+            <div class="card-image">
+              <img src="https://preview.ibb.co/kftLH7/background3.jpg">
+
+            </div>
+            <div class="card-content">
+              <p class="name"><strong>Dr. Senthil Raja A</strong></p>
+              <p>Department: BioMedical Engineering</p>
+              <p>Contact: 9678074521</p>
+              <p>Dept. Phone: 2527</p>
+              <p>HAB Phone No.: 2164</p>
+            </div>
+            <div class="card-action">
+              <a href="#">This is a link</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="row">
+        <div class="col lg6 s12 m7 contact">
+          <div class="card">
+            <div class="card-image">
+              <img src="https://preview.ibb.co/kftLH7/background3.jpg">
+
+            </div>
+            <div class="card-content">
+              <p class="name"><strong>Dr. Senthil Raja A</strong></p>
+              <p>Department: BioMedical Engineering</p>
+              <p>Contact: 9678074521</p>
+              <p>Dept. Phone: 2527</p>
+              <p>HAB Phone No.: 2164</p>
+            </div>
+            <div class="card-action">
+              <a href="#">This is a link</a>
+            </div>
+          </div>
+        </div>
+
+                <div class="col lg6 s12 m7 contact">
+          <div class="card">
+            <div class="card-image">
+              <img src="https://preview.ibb.co/kftLH7/background3.jpg">
+
+            </div>
+            <div class="card-content">
+              <p class="name"><strong>Dr. Senthil Raja A</strong></p>
+              <p>Department: BioMedical Engineering</p>
+              <p>Contact: 9678074521</p>
+              <p>Dept. Phone: 2527</p>
+              <p>HAB Phone No.: 2164</p>
+            </div>
+            <div class="card-action">
+              <a href="#">This is a link</a>
+            </div>
+          </div>
+        </div>
+      </div> -->
+
+
+
+
+
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="js/materialize.js"></script>
+  <script src="js/init.js"></script>
+  <script src="js/hover.js"></script>
+  <script>
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        document.getElementById("myBtn").style.display = "block";
+    } else {
+        document.getElementById("myBtn").style.display = "none";
+    }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+}
+</script>
+  </body>
+</html>
+<!-- Footer -->
+<footer class="page-footer font-small stylish-color-dark pt-4" style="background-color: #ee6e73; color: #FFF">
+
+    
+    <!-- Call to action -->
+    <ul class="list-unstyled list-inline text-center py-2">
+      <li class="list-inline-item">
+        <h5 class="mb-1">Designed by Club of Programmers, IIT (BHU), Varanasi</h5>
+      </li>
+    </ul>
+
+    <!-- Social buttons -->
+    <ul class="list-unstyled list-inline text-center">
+      <li class="list-inline-item">
+        <a href="http://www.copsiitbhu.co.in/" target="_blank" class="btn-floating btn-fb mx-1">
+          <i class="fa fa-link"> </i>
+        </a>
+      </li>
+      <li class="list-inline-item">
+        <a href="http://www.facebook.com/cops.iitbhu/" target="_blank" class="btn-floating btn-tw mx-1">
+          <i class="fa fa-facebook"> </i>
+        </a>
+      </li>
+      <li class="list-inline-item">
+        <a href="#" class="btn-floating btn-gplus mx-1">
+          <i class="fa fa-google-plus"> </i>
+        </a>
+      </li>
+    </ul>
+    <!-- Social buttons -->
+
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3">© 2018 Copyright:
+      Hostel Committee, IIT (BHU), Varanasi
+    </div>
+    <!-- Copyright -->
+
+</footer>
