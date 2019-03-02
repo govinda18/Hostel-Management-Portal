@@ -24,6 +24,7 @@ urlpatterns = [
     url(r'^hostel/(?P<pk>[0-9]+)/$', views.Hostel_View, name='hostel_view'),
     url(r'^hostel/login/$', views.HostelLoginView, name='hostellogin'),
     url(r'^hostel/addnotification/$', views.AddNotification, name='addnotification'),
+    url(r'^hostel/removenotification/(?P<pk>[0-9]+)/$', views.DeleteNotification, name='removenotification'),
     url(r'^hostel/updateinfo/$', views.UpdateHostel, name='updatehostel'),
     url(r'^logout/$', views.LogoutView, name='logoutview'),
     url(r'^register/resend_validation/$', views.ResendMail, name='resendmail'),

@@ -2,6 +2,10 @@
 <html lang="en" >
 
 <head>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+ 
   <meta charset="UTF-8">
   <title>Room Allotment</title>
  <style>
@@ -111,7 +115,7 @@ ol {
   content: "X";
   text-indent: 0;
   position: absolute;
-  top: 4px;
+  top: 30px;
   left: 50%;
   transform: translate(-50%, 0%);
 }
@@ -246,7 +250,7 @@ $(document).ready(function(){
     {% for room in rooms %}
     {% if not room.in_queue %}
     {% if not room.is_filled %}
-    <div class="col">
+    <div class="card h-100">
     <li class="seat">
       <input type="radio" id="{{room.id}}" name="select" value="{{room.id}}" />
       <label for="{{room.id}}">{{room.room_no}}</label>
@@ -254,13 +258,13 @@ $(document).ready(function(){
     </div>
     {% endif %}
     {% endif %}
-    {% if room.in_queue %}
+    {% if room.is_filled %}
     <li class="seat">
-      <input type="radio" disabled id="{{room.id}}" />
-      <label for="{{room.id}}">Occupied</label>
+      <input disabled type="radio" id="{{room.id}}" name="select" value="{{room.id}}" />
+      <label for="{{room.id}}">{{room.room_no}}</label>
     </li>
     {% endif %}
-    {% if forloop.counter|divisibleby:12 %}
+    {% if forloop.counter|divisibleby:11 %}
     </ol>
     </div>
     <div class="row">

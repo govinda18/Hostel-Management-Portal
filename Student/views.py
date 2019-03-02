@@ -84,18 +84,38 @@ def AddNotification(request):
 	isadmin = checkadmin(request)
 	if not isadmin:
 		return redirect('/')
+	hostelprofile = HostelProfile.objects.get(user=request.user)
 	if request.method == 'POST':
 		notification = Notifcation()
 		notification.hostel = hostelprofile.hostel
 		notification.link = request.POST['form-link']
 		notification.message = request.POST['form-message']
 		notification.save()
-		return redirect('/hostel/' + str(hostelprofile.hostel.id) + '/')
-	hostelprofile = HostelProfile.objects.get(user=request.user)	
+		return redirect('/hostel/' + str(hostelprofile.hostel.id) + '/')	
 	return render(request, 'student/notifications_form.html',{
 		"isadmin" : isadmin,
 		"hostel" : hostelprofile.hostel,
 		})
+
+def DeleteNotification(request,pk):
+	if not request.user.is_authenticated:
+		messages.error(request, "Please login to continue")
+		return redirect('/hostel/login')
+	isadmin = checkadmin(request)
+	if not isadmin:
+		return redirect('/')
+	try:
+		notification = Notifcation.objects.get(pk=pk)
+	except:
+		messages.error(request, "Error Deleting Notification.")
+		return redirect("/")
+	hostelprofile = HostelProfile.objects.get(user=request.user)
+	if notification.hostel != hostelprofile.hostel:
+		messages.error(request, "You are not authorized to delete this notification.")
+		return redirect("/")
+	notification.delete()
+	return redirect('/hostel/' + str(hostelprofile.id) + '/')
+
 
 def UpdateHostel(request):
 	if not request.user.is_authenticated:
@@ -166,9 +186,6 @@ def StudentProfile(request):
 	except:
 		return redirect('/')
 	if request.method == 'POST':
-		if 'dept' in request.POST:
-			dept = Branch.objects.get(pk=request.POST['dept'])
-			profile.branch = dept
 		if 'hostel' in request.POST:
 			try:
 				hostel = Hostel.objects.get(pk=request.POST['hostel'])
@@ -450,7 +467,7 @@ def ViewGrievanceDetail(request,pk):
 		return redirect('/student/login/')
 	isadmin = checkadmin(request)
 	if not isadmin:
-		return redirect('/student/viewgrievances')
+		return redirect('/student/grievances')
 	grievance = Grievance.objects.get(pk=pk)
 	userprofile = Profile.objects.get(user_ref=grievance.user)
 	print(request.POST)
@@ -460,6 +477,8 @@ def ViewGrievanceDetail(request,pk):
 				grievance.expected_date = request.POST['expected_date']
 		if 'status' in request.POST:
 			grievance.status = request.POST['status']
+		if 'comment' in request.POST:
+			grievance.comment = request.POST['comment']
 		grievance.save()
 		messages.success(request, "Updated Successfully.")
 		return redirect('/hostel/grievances/')
@@ -506,7 +525,7 @@ def AllotRoom(request):
 			continue
 		lock=True
 		room_selected = request.POST['select']
-		roominfo = Roominfo.objects.get(room_no = room_selected)
+		roominfo = Roominfo.objects.get(pk=room_selected)
 		if roominfo.is_filled:
 			messages.error(request, 'Room is already occupied.')
 			return redirect('/student/allotroom/')
@@ -514,10 +533,22 @@ def AllotRoom(request):
 			roominfo.member1 = profile
 			roominfo.save()
 			messages.success(request, "Room alloted successfully.")
-			lock = False
-			return redirect('/student/profile')
+		elif roominfo.member2 is None:
+			roominfo.member2 = profile
+			roominfo.save()
+			messages.success(request, "Room alloted successfully.")
+		elif roominfo.member3 is None:
+			roominfo.member2 = profile
+			roominfo.save()
+			messages.success(request, "Room alloted successfully.")
+		roominfo.count += 1
+		if roominfo.count >= roominfo.scheme.per_room:
+			print("value")
+			roominfo.is_filled = True
+		lock = False
+		return redirect('/student/profile')
 	for i in range(hostelscheme.start_room,hostelscheme.end_room+1):
-		rooms.append(Roominfo.objects.get(room_no=i)) 
+		rooms.append(Roominfo.objects.get(room_no=i,scheme=hostelscheme)) 
 	return render(request, 'student/roomallocation.html',{
 		"rooms" : rooms,
 		"isadmin" : isadmin,

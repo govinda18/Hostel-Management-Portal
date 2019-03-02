@@ -18,6 +18,7 @@ class Hostel(models.Model):
 	hostel_image1 = models.ImageField(upload_to='hostel_images')
 	hostel_image2 = models.ImageField(upload_to='hostel_images')
 	hostel_image3 = models.ImageField(upload_to='hostel_images')
+	flag_image = models.ImageField(upload_to='hostel_images',null=True)
 	number_of_students = models.PositiveIntegerField(default=0)
 	mess1_maharaj_name = models.CharField(max_length=100,null=True)
 	mess2_maharaj_name = models.CharField(max_length=100,null=True)
@@ -86,7 +87,7 @@ class Grievance(models.Model):
     description = models.CharField('Description', max_length=1000, blank=True)
     expected_date = models.DateField(null=True,blank=True)
     status = models.CharField(max_length=200,default='Pending')
-
+    comment = models.CharField(max_length=500,null=True,blank=True)
     def __str__(self):
     	return self.subject + ' - ' + str(self.date)
 
@@ -103,9 +104,9 @@ class HostelAllotment(models.Model):
 
 class Roominfo(models.Model):
     room_no = models.IntegerField(blank=False,null=False)
-    member1 = models.ForeignKey(Profile,blank=True,null=True,related_name='mem1')
-    member2 = models.ForeignKey(Profile,blank=True,null=True,related_name='mem2')
-    member3 = models.ForeignKey(Profile,blank=True,null=True,related_name='mem3')
+    member1 = models.ForeignKey(Profile,blank=True,null=True,related_name='mem1', on_delete=models.SET_NULL)
+    member2 = models.ForeignKey(Profile,blank=True,null=True,related_name='mem2', on_delete=models.SET_NULL)
+    member3 = models.ForeignKey(Profile,blank=True,null=True,related_name='mem3', on_delete=models.SET_NULL)
     scheme = models.ForeignKey(HostelAllotment, on_delete=models.CASCADE,null=True)
     is_filled = models.BooleanField(default=False)
     count = models.PositiveIntegerField(default=0)

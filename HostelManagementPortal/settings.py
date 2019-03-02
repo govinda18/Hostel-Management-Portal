@@ -124,8 +124,11 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'codefest.iitbhu2@gmail.com'
-EMAIL_HOST_PASSWORD = 'BackAgainin2017'
+EMAIL_HOST_USER = 'hostels.parliament@itbhu.ac.in'
+EMAIL_HOST_PASSWORD = 'hostelcommittee'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-DEFAULT_FROM_EMAIL = 'govinda.totla.cse16@itbhu.ac.in'
+DEFAULT_FROM_EMAIL = 'hostels.parliament@itbhu.ac.in'
+
+# hostels.parliament@itbhu.ac.in
+# hostelcommittee

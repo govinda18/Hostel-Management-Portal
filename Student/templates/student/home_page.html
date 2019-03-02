@@ -13,21 +13,17 @@
       <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
       <li data-target="#myCarousel" data-slide-to="1"></li>
       <li data-target="#myCarousel" data-slide-to="2"></li>
-      <li data-target="#myCarousel" data-slide-to="3"></li>
    </ol>
    <!-- Wrapper for slides -->
    <div class="carousel-inner" role="listbox">
       <div class="item active">
-         <img class="img img-responsive" src='https://qph.fs.quoracdn.net/main-qimg-8e4d8a94ce909bd527ad7c72ab3411a5-c'  alt="Vrindavan Bhawan ">
+         <img class="img img-responsive" src='/media/hostel_images/VishvaKarma-1.jpg'  alt="Hostel Image ">
       </div>
       <div class="item ">
-         <img class="img img-responsive" src="{% static 'ui/res/biet/saket.jpg' %}" alt="Saket Bhawan">
+         <img class="img img-responsive" src="/media/hostel_images/Rajputana-6.jpg " alt="Hostel Image">
       </div>
       <div class="item">
-         <img class="img img-responsive" src="{% static 'ui/res/biet/kalpana.jpg' %} " alt="Kalpana">
-      </div>
-      <div class="item">
-         <img class="img img-responsive" src="{% static 'ui/res/biet/jaibharat.jpg' %}" alt="Jaibharat">
+         <img class="img img-responsive" src="/media/hostel_images/Ramanujan-4.jpg  " alt="Mess Image">
       </div>
    </div>
    <!-- Left and right controls -->
@@ -66,7 +62,7 @@
                <div class="col-md-12" style="margin-left: 10px; " >
                   <p style="height:226px ;overflow-y:scroll">
                      {%  for list  in notifications %}
-                     <a href="{{list.link}}" target="_blank">{{list.message}}</a><br>
+                     <a href="{{list.link}}" target="_blank">{{list.message}} - {{list.hostel}}</a><br>
                      {% endfor %}
                   </p>
                </div>
@@ -82,12 +78,11 @@
                <!-------post----->
                <div class="col-md-12 " >
                   <div style="height:236px;">
-                     <span class="glyphicon glyphicon-hand-right"> <a style="color: black" href="/api"> API For Accessing The Content</a></span><br><br>
-                     <span class="glyphicon glyphicon-hand-right"> <a   style="color: black" href="http://playstore.com"> Our Android App </a></span><br><br>
-                     <span class="glyphicon glyphicon-hand-right"> <a  style="color: black"  href="/ui/login"> Search Student </a></span><br><br>
-                     <span class="glyphicon glyphicon-hand-right"> <a  style="color: black"  href="/ui/login"> View Api Postman Documentation </a></span><br><br>
-                     <span class="glyphicon glyphicon-hand-right"> <a  style="color: black"  href="/ui/login"> Hostel Information </a></span><br><br>
-                     <span class="glyphicon glyphicon-hand-right"> <a  style="color: black"  href="/ui/login"> Search Blood Group </a></span><br><br>
+                     <span class="glyphicon glyphicon-hand-right"> <a style="color: black" href="https://drive.google.com/file/d/0B081mTQyGdy5VHVyRnVsMm5xWXMyS1RQSXFONlUzeXZUb29B/view?usp=sharing" target="_blank"> Hostel Committee</a></span><br><br>
+                     <span class="glyphicon glyphicon-hand-right"> <a   style="color: black" href="https://drive.google.com/file/d/1mL03zdBFMtQwzES4tRRhdXG1lZVI_UFi/view?usp=sharing" target="_blank"> Hostel Maintenance Policy </a></span><br><br>
+                     <span class="glyphicon glyphicon-hand-right"> <a  style="color: black"  href="https://drive.google.com/file/d/11v7vp54PRmDYR708BYvJcagKk_QzIRNH/view?usp=sharing" target="_blank"> Mess-Canteen Policy </a></span><br><br>
+                     <span class="glyphicon glyphicon-hand-right"> <a  style="color: black"  href="https://drive.google.com/file/d/1oOFn3R9fEze3cZ_rCX3b9xSNnTBhg8sY/view?usp=sharing" target="_blank"> Academic Office Contacts </a></span><br><br>
+                     <span class="glyphicon glyphicon-hand-right"> <a  style="color: black"  href="https://drive.google.com/file/d/0B11jnltBT3TFY0xqT2pOX2FMbnlhRlg0UVd3NEtOaG1iUzZ3/view?usp=sharing" target="_blank"> IWD staff contacts </a></span><br><br>
                   </div>
                </div>
             </div>
@@ -122,7 +117,7 @@
                <a href="/hostel/{{hostel.id}}">
                   <div class="col-sm-4">
                      <h4>{{hostel.hostel_name}}</h4>
-                     <img src="{{hostel.hostel_image1.url}}" style="width: 180px;height: 180px;">
+                     <img src="{{hostel.flag_image.url}}" style="width: 180px;height: 180px;">
                   </div>
                </a>
                {% endfor %}

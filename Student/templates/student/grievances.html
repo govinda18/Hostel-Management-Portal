@@ -22,6 +22,9 @@
                             <th>Expected Date of Completion</th>
                             <th>Current Status</th>
                             <th>Concerned Authority</th>
+                            {% if not isadmin %}
+                            <th>Comment</th>
+                            {% endif %}
                             {% if isadmin %}
                             <th>Details</th>
                             {% endif %}
@@ -37,6 +40,10 @@
                             <td>{{ query.expected_date }}</td>
                             <td>{{ query.status }}</td>
                             <td>{{ query.category.authority }}</td>
+                            {% if not isadmin %}
+                            <td>{{ query.comment }}</td>
+                            {% endif %}
+
                             {% if isadmin %}
                             <td><a href="/hostel/grievance/{{query.pk}}/"><button>View</button></a></td>
                             {% endif %}
