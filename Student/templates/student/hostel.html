@@ -263,132 +263,26 @@
 </body>
 </html>
 
-<!-- <h3 id="not">Contact Us</h3>
- -->      <!-- <div class="row">
-        <div class="col lg6 s9 m7 contact">
-          <div class="card">
-            <div class="card-image">
-              <img src="https://preview.ibb.co/kftLH7/background3.jpg"  width="100px">
-
-            </div>
-            <div class="card-content">
-              <p class="name"><strong>Dr. Senthil Raja A</strong></p>
-              <p>Department: BioMedical Engineering</p>
-              <p>Contact: 9678074521</p>
-              <p>Dept. Phone: 2527</p>
-              <p>HAB Phone No.: 2164</p>
-            </div>
-            <div class="card-action">
-              <a href="#">This is a link</a>
-            </div>
-          </div>
-        </div>
-
-
-
-                <div class="col lg6 s12 m7 contact">
-          <div class="card">
-            <div class="card-image">
-              <img src="https://preview.ibb.co/kftLH7/background3.jpg">
-
-            </div>
-            <div class="card-content">
-              <p class="name"><strong>Dr. Senthil Raja A</strong></p>
-              <p>Department: BioMedical Engineering</p>
-              <p>Contact: 9678074521</p>
-              <p>Dept. Phone: 2527</p>
-              <p>HAB Phone No.: 2164</p>
-            </div>
-            <div class="card-action">
-              <a href="#">This is a link</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
+ <h3 id="not" align="center">Staff</h3>
+        <div style="margin-left: 2%;margin-right: 2%" >
+   <div class="panel panel-default " >
+      <div class="panel panel-body" style="background-color:rgba(128, 128, 128, 0.08);" id="hostel_section">
+         <div class="container-fluid">
             <div class="row">
-        <div class="col lg6 s12 m7 contact">
-          <div class="card">
-            <div class="card-image">
-              <img src="https://preview.ibb.co/kftLH7/background3.jpg">
-
+               {% for member in staff %}
+                  <div class="col-sm-4">
+                     <img src="{{member.profilepic.url}}" style="width: 180px;height: 180px;">
+                     <h4>{{member.name}}</h4>
+                     <h4>{{member.post}}</h4>
+                     <h5>+91 {{member.contact_no}}</h5>
+                     <a href="mailto:{{member.emailid}}" target="_blank"><h6>{{member.emailid}}</h6></a>
+                  </div>
+               {% endfor %}
             </div>
-            <div class="card-content">
-              <p class="name"><strong>Dr. Senthil Raja A</strong></p>
-              <p>Department: BioMedical Engineering</p>
-              <p>Contact: 9678074521</p>
-              <p>Dept. Phone: 2527</p>
-              <p>HAB Phone No.: 2164</p>
-            </div>
-            <div class="card-action">
-              <a href="#">This is a link</a>
-            </div>
-          </div>
-        </div>
-
-                <div class="col lg6 s12 m7 contact">
-          <div class="card">
-            <div class="card-image">
-              <img src="https://preview.ibb.co/kftLH7/background3.jpg">
-
-            </div>
-            <div class="card-content">
-              <p class="name"><strong>Dr. Senthil Raja A</strong></p>
-              <p>Department: BioMedical Engineering</p>
-              <p>Contact: 9678074521</p>
-              <p>Dept. Phone: 2527</p>
-              <p>HAB Phone No.: 2164</p>
-            </div>
-            <div class="card-action">
-              <a href="#">This is a link</a>
-            </div>
-          </div>
-        </div>
+         </div>
       </div>
-
-
-
-      <div class="row">
-        <div class="col lg6 s12 m7 contact">
-          <div class="card">
-            <div class="card-image">
-              <img src="https://preview.ibb.co/kftLH7/background3.jpg">
-
-            </div>
-            <div class="card-content">
-              <p class="name"><strong>Dr. Senthil Raja A</strong></p>
-              <p>Department: BioMedical Engineering</p>
-              <p>Contact: 9678074521</p>
-              <p>Dept. Phone: 2527</p>
-              <p>HAB Phone No.: 2164</p>
-            </div>
-            <div class="card-action">
-              <a href="#">This is a link</a>
-            </div>
-          </div>
-        </div>
-
-                <div class="col lg6 s12 m7 contact">
-          <div class="card">
-            <div class="card-image">
-              <img src="https://preview.ibb.co/kftLH7/background3.jpg">
-
-            </div>
-            <div class="card-content">
-              <p class="name"><strong>Dr. Senthil Raja A</strong></p>
-              <p>Department: BioMedical Engineering</p>
-              <p>Contact: 9678074521</p>
-              <p>Dept. Phone: 2527</p>
-              <p>HAB Phone No.: 2164</p>
-            </div>
-            <div class="card-action">
-              <a href="#">This is a link</a>
-            </div>
-          </div>
-        </div>
-      </div> -->
-
-
+   </div>
+</div>
 
 
 

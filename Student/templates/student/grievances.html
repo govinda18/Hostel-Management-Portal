@@ -21,13 +21,7 @@
                             <th>Posting Date</th>
                             <th>Expected Date of Completion</th>
                             <th>Current Status</th>
-                            <th>Concerned Authority</th>
-                            {% if not isadmin %}
-                            <th>Comment</th>
-                            {% endif %}
-                            {% if isadmin %}
                             <th>Details</th>
-                            {% endif %}
                         </tr>
                     </thead>
 
@@ -39,14 +33,7 @@
                             <td>{{ query.date }}</td>
                             <td>{{ query.expected_date }}</td>
                             <td>{{ query.status }}</td>
-                            <td>{{ query.category.authority }}</td>
-                            {% if not isadmin %}
-                            <td>{{ query.comment }}</td>
-                            {% endif %}
-
-                            {% if isadmin %}
                             <td><a href="/hostel/grievance/{{query.pk}}/"><button>View</button></a></td>
-                            {% endif %}
 
                         </tr>
                         {% endfor %}
@@ -56,6 +43,25 @@
                 </table>
   </div>
 </div>
+<center>
+<div class="pagination">
+    <span class="step-links">
+        {% if grievances.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ grievances.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ grievances.number }} of {{ grievances.paginator.num_pages }}.
+        </span>
+
+        {% if grievances.has_next %}
+            <a href="?page={{ grievances.next_page_number }}">next</a>
+            <a href="?page={{ grievances.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+</center>
 
 </body>
 {% endblock %}

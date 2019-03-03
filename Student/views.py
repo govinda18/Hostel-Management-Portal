@@ -13,6 +13,7 @@ import random
 import string
 from django.core.mail import send_mail
 from django.conf import settings
+from django.core.paginator import Paginator
 import datetime
 
 host_location = 'http://127.0.0.1:8000/'
@@ -43,10 +44,12 @@ def Hostel_View(request,pk):
 	isadmin = checkadmin(request)
 	hostel = get_object_or_404(Hostel,pk=pk)
 	notification = Notifcation.objects.filter(hostel=hostel).order_by('-time_stamp')
+	staff = Staff.objects.filter(hostel = hostel)
 	return render(request, 'student/hostel.html',{
 		"hostel" : hostel,
 		"isadmin" : isadmin,
 		"notifications" : notification,
+		"staff" : staff,
 		})
 
 def HostelLoginView(request):
@@ -273,6 +276,7 @@ def ForgotPassword(request):
 		messages.success(request, "Password has been reset successfully. Please check your mail.")
 		return redirect('/student/login/')
 	return render(request, 'student/forgot_password.html')
+
 def StudentRegister(request):
 	if request.user.is_authenticated:
 		return redirect('/')
@@ -294,7 +298,7 @@ def StudentRegister(request):
 			messages.error(request, "Email ID has already been registered.")
 			return redirect("/student/login/")
 		if '@itbhu.ac.in' not in mail:
-			messages.error(request,"Email address is not valid. Please use only mail id with @itbhu.ac.in")
+			messages.error(request,"Email address is not valid. Please use mail id with @itbhu.ac.in only.")
 			return redirect("/student/register")
 		if request.POST['form-pass'] != request.POST['form-passagain']:
 			messages.error(request, "Paasword do not match.")
@@ -409,6 +413,7 @@ def AddGrievance(request):
 				return redirect('/student/addgrievance/')
 		grievance = Grievance()
 		grievance.user = request.user
+		profile = Profile.objects.get(user_ref = grievance.user)		
 		try:
 			grievance.hostel = Hostel.objects.get(pk=request.POST['form-hostel'])
 		except:
@@ -422,6 +427,21 @@ def AddGrievance(request):
 		grievance.subject = request.POST['form-subject']
 		grievance.description = request.POST['form-desc']
 		grievance.save()
+		matter = 'Hi ' + profile.first_name + ',\n\n'
+		matter += 'Your grievance was successfully registered with us.'
+		matter += ' You can track the status of your grievance using the following link - \n'
+		matter += host_location + 'hostel/grievance/' + str(grievance.id) + '/'
+		matter += '\n\n'
+		matter += 'Thanks\n'
+		matter += 'Regards\n'
+		matter += 'Team Hostel Web Committee' 
+		send_mail(
+		'Grievance Posted Successfully',
+		matter,
+		settings.DEFAULT_FROM_EMAIL,
+		[profile.emailid],
+		fail_silently=False,
+		)
 		return redirect('/student/grievances/')
 
 
@@ -440,9 +460,14 @@ def ViewStudentGrievances(request):
 	isadmin = checkadmin(request)
 	if isadmin:
 		return redirect('/')
-	grievances = Grievance.objects.filter(user = request.user).order_by('-date')
+	grievances = Grievance.objects.all().order_by('-date')
+	paginator = Paginator(grievances, 25)
+	page = request.GET.get('page')
+	if not page:
+		page = 1
+	grievancelist = paginator.page(page) 
 	return render(request, 'student/grievances.html', {
-		"grievances" : grievances,
+		"grievances" : grievancelist,
 		"isadmin" : isadmin,
 		})
 
@@ -466,19 +491,49 @@ def ViewGrievanceDetail(request,pk):
 		messages.error(request, "Please login to continue")
 		return redirect('/student/login/')
 	isadmin = checkadmin(request)
-	if not isadmin:
+	try:
+		grievance = Grievance.objects.get(pk=pk)
+		userprofile = Profile.objects.get(user_ref=grievance.user)
+	except:
+		messages.error(request, 'No such grievance found.')
 		return redirect('/student/grievances')
-	grievance = Grievance.objects.get(pk=pk)
-	userprofile = Profile.objects.get(user_ref=grievance.user)
-	print(request.POST)
+	if not isadmin:
+		return render(request, 'student/grievance_detail.html', context = {
+			"grievance" : grievance,
+			"profile" : userprofile,
+			"isadmin" : isadmin
+			})
 	if request.method == 'POST':
+		flag_for_mail_send = False
 		if 'expected_date' in request.POST:
 			if request.POST['expected_date']: 
-				grievance.expected_date = request.POST['expected_date']
+				if grievance.expected_date != request.POST['expected_date']:
+					flag_for_mail_send = True
+					grievance.expected_date = request.POST['expected_date']
 		if 'status' in request.POST:
-			grievance.status = request.POST['status']
+			if grievance.status != request.POST['status']:
+				flag_for_mail_send = True 	
+				grievance.status = request.POST['status']
 		if 'comment' in request.POST:
-			grievance.comment = request.POST['comment']
+			if grievance.comment != request.POST['comment']:
+				flag_for_mail_send = True
+				grievance.comment = request.POST['comment']
+		if flag_for_mail_send:
+			matter = 'Hi ' + userprofile.first_name + ',\n\n'
+			matter += 'Your grievance status was recently updated.'
+			matter += ' You can track the status of your grievance using the following link - \n'
+			matter += host_location + 'hostel/grievance/' + str(grievance.id) + '/'
+			matter += '\n\n'
+			matter += 'Thanks\n'
+			matter += 'Regards\n'
+			matter += 'Team Hostel Web Committee' 
+			send_mail(
+			'Grievance Status Updated',
+			matter,
+			settings.DEFAULT_FROM_EMAIL,
+			[userprofile.emailid],
+			fail_silently=False,
+			)
 		grievance.save()
 		messages.success(request, "Updated Successfully.")
 		return redirect('/hostel/grievances/')

@@ -124,3 +124,14 @@ class Activation(models.Model):
         chars = 'abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*(-_=+)'
         secret_key = get_random_string(20, chars)
         return hashlib.sha256((secret_key + username).encode('utf-8')).hexdigest()
+
+class Staff(models.Model):
+	name = models.CharField(max_length = 150)
+	post = models.CharField(max_length = 150)
+	contact_no = models.PositiveIntegerField(default = 0)
+	emailid = models.CharField(max_length = 150)
+	profilepic = models.ImageField(upload_to = 'staff_images',null=True)
+	hostel = models.ForeignKey(Hostel, on_delete=models.CASCADE)
+
+	def __str__(self):
+		return self.name + ' - ' + self.post + ' - ' + str(self.hostel) 

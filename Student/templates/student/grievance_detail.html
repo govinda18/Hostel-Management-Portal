@@ -1,0 +1,102 @@
+{% load static from staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Grievances</title>
+<style type="text/css">
+td
+{
+  max-width: 100px;
+  word-wrap: break-word;
+}
+</style>
+</head>
+
+<body>
+  {% include 'student/home_page_navbar.html' %}
+  {% block body %}
+<div class="container">
+  <h2>Grievance ID - {{grievance.id}}</h2>
+  <h5> posted on {{grievance.date}}</h5>                                                                
+  <div class="">          
+            <table class="table table-bordered table-fit" align="center">
+
+                    <tbody>
+                        <tr>
+                            <td class="col-md-4" align="center"><b>Posted by</b></td>
+                            <td class="col-md-8" align="center">{{profile.emailid}}</td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-4" align="center"><b>Concerned Hostel</b></td>
+                            <td class="col-md-8" align="center">{{grievance.hostel}}</td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-4" align="center"><b>Category</b></td>
+                            <td class="col-md-8" align="center">{{grievance.category}}</td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-4" align="center"><b>Subject</b></td>
+                            <td class="col-md-8" align="center">{{grievance.subject}}</td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-4" align="center"><b>Description</b></td>
+                            <td class="col-md-8" align="center">{{grievance.description}}</td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-4" align="center"><b>Expected Date of Solving</b></td>
+                            <td class="col-md-8" align="center">{{grievance.expected_date}}</td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-4" align="center"><b>Comment</b></td>
+                            <td class="col-md-8" align="center">{{grievance.comment}}</td>
+                        </tr>
+
+                        
+                    </tbody>
+                </table>
+  </div>
+</div>
+
+</body>
+{% endblock %}
+
+<!-- Footer -->
+<footer class="page-footer font-small stylish-color-dark pt-4" style="background-color: #ee6e73; color: #FFF">
+
+    
+    <!-- Call to action -->
+    <ul class="list-unstyled list-inline text-center py-2">
+      <li class="list-inline-item">
+        <h5 class="mb-1">Designed by Club of Programmers, IIT (BHU), Varanasi</h5>
+      </li>
+    </ul>
+
+    <!-- Social buttons -->
+    <ul class="list-unstyled list-inline text-center">
+      <li class="list-inline-item">
+        <a href="http://www.copsiitbhu.co.in/" target="_blank" class="btn-floating btn-fb mx-1">
+          <i class="fa fa-link"> </i>
+        </a>
+      </li>
+      <li class="list-inline-item">
+        <a href="http://www.facebook.com/cops.iitbhu/" target="_blank" class="btn-floating btn-tw mx-1">
+          <i class="fa fa-facebook"> </i>
+        </a>
+      </li>
+      <li class="list-inline-item">
+        <a href="#" class="btn-floating btn-gplus mx-1">
+          <i class="fa fa-google-plus"> </i>
+        </a>
+      </li>
+    </ul>
+    <!-- Social buttons -->
+
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3">© 2018 Copyright:
+      Hostel Committee, IIT (BHU), Varanasi
+    </div>
+    <!-- Copyright -->
+
+</footer>
