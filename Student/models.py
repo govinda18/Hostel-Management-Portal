@@ -130,8 +130,22 @@ class Staff(models.Model):
 	post = models.CharField(max_length = 150)
 	contact_no = models.PositiveIntegerField(default = 0)
 	emailid = models.CharField(max_length = 150)
-	profilepic = models.ImageField(upload_to = 'staff_images',null=True)
-	hostel = models.ForeignKey(Hostel, on_delete=models.CASCADE)
+	profilepic = models.ImageField(upload_to = 'staff_images',null = True)
+	hostel = models.ForeignKey(Hostel, on_delete = models.CASCADE)
 
 	def __str__(self):
-		return self.name + ' - ' + self.post + ' - ' + str(self.hostel) 
+		return self.name + ' - ' + self.post + ' - ' + str(self.hostel)
+
+class LostFound(models.Model):
+	user = models.ForeignKey(Profile, on_delete = models.CASCADE)
+	label = models.BooleanField(default = False)
+	date = models.DateField(null=False,blank=True,default=datetime.now())
+	subject = models.CharField(max_length = 100)
+	item_info = models.TextField()
+	location_info = models.TextField()
+	item_image1 = models.ImageField(upload_to = 'lostfound_images', null = True)
+	item_image2 = models.ImageField(upload_to = 'lostfound_images', null = True)
+	item_image3 = models.ImageField(upload_to = 'lostfound_images', null = True)
+
+	def __str__(self):
+		return self.subject + ' - ' + ("Found" if self.label else "Lost")

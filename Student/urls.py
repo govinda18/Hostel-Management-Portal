@@ -39,4 +39,7 @@ urlpatterns = [
     url(r'^student/grievances/$', views.ViewStudentGrievances, name='viewstudentgrievances'),
     url(r'^hostel/grievances/$', views.ViewHostelGrievances, name='viewhostelgrievances'),
     url(r'^hostel/grievance/(?P<pk>[0-9]+)/$', views.ViewGrievanceDetail, name='viewgrievancedetail'),
+    url(r'^lostandfound/$', views.ViewLostFound, name='viewlostfound'),
+    url(r'^addlostfound/$', views.AddLostFound, name='addlostfound'),
+
 ]

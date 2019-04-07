@@ -608,3 +608,66 @@ def AllotRoom(request):
 		"rooms" : rooms,
 		"isadmin" : isadmin,
 		})
+
+def ViewLostFound(request):
+	if not request.user.is_authenticated:
+		messages.error(request, "Please login to continue")
+		return redirect('/student/login/')
+
+	LostFoundList = LostFound.objects.all().order_by('-date')
+	label = request.GET.get('type')
+	if label is not None:
+		LostFoundList = LostFound.objects.filter(label = label).order_by('-date')
+	return render(request, 'student/lostfound.html', {
+		"lostfoundlist" : LostFoundList,
+		"isadmin" : checkadmin(request),	
+		})	
+
+def AddLostFound(request):
+	if not request.user.is_authenticated:
+		messages.error(request, "Please login to continue")
+		return redirect('/student/login/')
+	isadmin = checkadmin(request)
+	if request.method == 'POST':
+		required = ['form-label', 'form-subject', 'form-iteminfo', 'form-location']
+		for i in required:
+			if i not in request.POST:
+				messages.error(request, "Incomplete Information.")
+				return redirect('/addlostfound/')
+		lostfound = LostFound()
+		profile = Profile.objects.get(user_ref = request.user)
+		lostfound.user = profile		
+		lostfound.subject = request.POST['form-subject']
+		lostfound.item_info = request.POST['form-iteminfo']
+		lostfound.location_info = request.POST['form-location']
+		print(request.FILES)
+		if 'img1' in request.FILES:
+			lostfound.item_image1 = request.FILES['img1']
+		if 'img2' in request.FILES:
+			lostfound.item_image2 = request.FILES['img2']
+		if 'img3' in request.FILES:
+			lostfound.item_image3 = request.FILES['img3']
+		lostfound.save()
+		# matter = 'Hi ' + profile.first_name + ',\n\n'
+		# matter += 'Your lost/found item was successfully posted on the portal.'
+		# matter += ' You can track the status of your post - \n'
+		# matter += host_location + 'hostel/grievance/' + str(grievance.id) + '/'
+		# matter += '\n\n'
+		# matter += 'Thanks\n'
+		# matter += 'Regards\n'
+		# matter += 'Team Hostel Web Committee' 
+		# send_mail(
+		# 'Grievance Posted Successfully',
+		# matter,
+		# settings.DEFAULT_FROM_EMAIL,
+		# [profile.emailid],
+		# fail_silently=False,
+		# )
+		return redirect('/lostandfound/')
+
+
+	hostels = Hostel.objects.all().order_by('-hostel_name')
+	categories = GrievanceCategory.objects.all().order_by('name')
+	return render(request, 'student/lostfoundform.html',{
+		"isadmin" : isadmin,
+		})
