@@ -41,5 +41,5 @@ urlpatterns = [
     url(r'^hostel/grievance/(?P<pk>[0-9]+)/$', views.ViewGrievanceDetail, name='viewgrievancedetail'),
     url(r'^lostandfound/$', views.ViewLostFound, name='viewlostfound'),
     url(r'^addlostfound/$', views.AddLostFound, name='addlostfound'),
-
+    url(r'^lostfound/(?P<pk>[0-9]+)/$', views.ViewLostFoundDetail, name='viewlostfound'),
 ]

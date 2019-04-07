@@ -138,7 +138,7 @@ class Staff(models.Model):
 
 class LostFound(models.Model):
 	user = models.ForeignKey(Profile, on_delete = models.CASCADE)
-	label = models.BooleanField(default = False)
+	label = models.BooleanField(default = False) # False for Lost
 	date = models.DateField(null=False,blank=True,default=datetime.now())
 	subject = models.CharField(max_length = 100)
 	item_info = models.TextField()

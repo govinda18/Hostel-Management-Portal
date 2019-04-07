@@ -671,3 +671,20 @@ def AddLostFound(request):
 	return render(request, 'student/lostfoundform.html',{
 		"isadmin" : isadmin,
 		})
+
+def ViewLostFoundDetail(request, pk):
+	if not request.user.is_authenticated:
+		messages.error(request, "Please login to continue")
+		return redirect('/student/login/')
+	isadmin = checkadmin(request)
+	try:
+		lostfound = LostFound.objects.get(pk=pk)
+		userprofile = lostfound.user
+	except:
+		messages.error(request, 'No such post found.')
+		return redirect('/lostandfound/')
+	return render(request, 'student/lostfound_detail.html', context = {
+		"lostfound" : lostfound,
+		"profile" : userprofile,
+		"isadmin" : isadmin
+		})
