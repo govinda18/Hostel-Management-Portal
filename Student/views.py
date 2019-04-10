@@ -63,8 +63,8 @@ def HostelLoginView(request):
 		except Exception as e:
 			messages.error(request,e)
 			return render(request,'student/hostel_login_form.html')
-		
-		return redirect('/hostel/'+str(hostel.id)+'/')	
+
+		return redirect('/hostel/'+str(hostel.id)+'/')
 	return render(request,'student/hostel_login_form.html')
 
 def LogoutView(request):
@@ -94,7 +94,7 @@ def AddNotification(request):
 		notification.link = request.POST['form-link']
 		notification.message = request.POST['form-message']
 		notification.save()
-		return redirect('/hostel/' + str(hostelprofile.hostel.id) + '/')	
+		return redirect('/hostel/' + str(hostelprofile.hostel.id) + '/')
 	return render(request, 'student/notifications_form.html',{
 		"isadmin" : isadmin,
 		"hostel" : hostelprofile.hostel,
@@ -146,7 +146,7 @@ def UpdateHostel(request):
 	return render(request, 'student/hostel_update_form.html',{
 		"isadmin" : isadmin,
 		"hostel" : hostel,
-		})	
+		})
 
 def StudentLogin(request):
 	if request.user.is_authenticated:
@@ -172,7 +172,7 @@ def StudentLogin(request):
 			return redirect("/student/login")
 		if not profile.verified:
 			messages.error(request, "Email Id not verified. <a href='/register/resend_validation?uid=%s'>Resend Email?</a>" % (profile.id),extra_tags='safe')
-			return redirect("/student/login")		
+			return redirect("/student/login")
 		login_ref(request,user)
 		return redirect('/')
 	return render(request, 'student/login_form.html')
@@ -249,7 +249,7 @@ def ForgotPassword(request):
 	if request.method == 'POST':
 		if 'form-email' not in request.POST:
 			messages.error(request, "Incomplete Information.")
-			return redirect('/student/forgotpass/')
+			return redirect('/student/forgot-password/')
 		try:
 			mail = request.POST['form-email'].strip()
 			mail = mail.lower()
@@ -297,8 +297,8 @@ def StudentRegister(request):
 		if (player is not None):
 			messages.error(request, "Email ID has already been registered.")
 			return redirect("/student/login/")
-		if '@itbhu.ac.in' not in mail:
-			messages.error(request,"Email address is not valid. Please use mail id with @itbhu.ac.in only.")
+		if '@itbhu.ac.in' or '@iitbhu.ac.in' not in mail:
+			messages.error(request,"Email address is not valid. Please use mail id with @itbhu.ac.in or @iitbhu.ac.in only.")
 			return redirect("/student/register")
 		if request.POST['form-pass'] != request.POST['form-passagain']:
 			messages.error(request, "Paasword do not match.")
@@ -413,7 +413,7 @@ def AddGrievance(request):
 				return redirect('/student/addgrievance/')
 		grievance = Grievance()
 		grievance.user = request.user
-		profile = Profile.objects.get(user_ref = grievance.user)		
+		profile = Profile.objects.get(user_ref = grievance.user)
 		try:
 			grievance.hostel = Hostel.objects.get(pk=request.POST['form-hostel'])
 		except:
@@ -434,7 +434,7 @@ def AddGrievance(request):
 		matter += '\n\n'
 		matter += 'Thanks\n'
 		matter += 'Regards\n'
-		matter += 'Team Hostel Web Committee' 
+		matter += 'Team Hostel Web Committee'
 		send_mail(
 		'Grievance Posted Successfully',
 		matter,
@@ -465,7 +465,7 @@ def ViewStudentGrievances(request):
 	page = request.GET.get('page')
 	if not page:
 		page = 1
-	grievancelist = paginator.page(page) 
+	grievancelist = paginator.page(page)
 	return render(request, 'student/grievances.html', {
 		"grievances" : grievancelist,
 		"isadmin" : isadmin,
@@ -506,13 +506,13 @@ def ViewGrievanceDetail(request,pk):
 	if request.method == 'POST':
 		flag_for_mail_send = False
 		if 'expected_date' in request.POST:
-			if request.POST['expected_date']: 
+			if request.POST['expected_date']:
 				if grievance.expected_date != request.POST['expected_date']:
 					flag_for_mail_send = True
 					grievance.expected_date = request.POST['expected_date']
 		if 'status' in request.POST:
 			if grievance.status != request.POST['status']:
-				flag_for_mail_send = True 	
+				flag_for_mail_send = True
 				grievance.status = request.POST['status']
 		if 'comment' in request.POST:
 			if grievance.comment != request.POST['comment']:
@@ -526,7 +526,7 @@ def ViewGrievanceDetail(request,pk):
 			matter += '\n\n'
 			matter += 'Thanks\n'
 			matter += 'Regards\n'
-			matter += 'Team Hostel Web Committee' 
+			matter += 'Team Hostel Web Committee'
 			send_mail(
 			'Grievance Status Updated',
 			matter,
@@ -603,7 +603,7 @@ def AllotRoom(request):
 		lock = False
 		return redirect('/student/profile')
 	for i in range(hostelscheme.start_room,hostelscheme.end_room+1):
-		rooms.append(Roominfo.objects.get(room_no=i,scheme=hostelscheme)) 
+		rooms.append(Roominfo.objects.get(room_no=i,scheme=hostelscheme))
 	return render(request, 'student/roomallocation.html',{
 		"rooms" : rooms,
 		"isadmin" : isadmin,
@@ -620,8 +620,8 @@ def ViewLostFound(request):
 		LostFoundList = LostFound.objects.filter(label = label).order_by('-date')
 	return render(request, 'student/lostfound.html', {
 		"lostfoundlist" : LostFoundList,
-		"isadmin" : checkadmin(request),	
-		})	
+		"isadmin" : checkadmin(request),
+		})
 
 def AddLostFound(request):
 	if not request.user.is_authenticated:
@@ -636,7 +636,7 @@ def AddLostFound(request):
 				return redirect('/addlostfound/')
 		lostfound = LostFound()
 		profile = Profile.objects.get(user_ref = request.user)
-		lostfound.user = profile		
+		lostfound.user = profile
 		lostfound.subject = request.POST['form-subject']
 		lostfound.item_info = request.POST['form-iteminfo']
 		lostfound.location_info = request.POST['form-location']
@@ -655,7 +655,7 @@ def AddLostFound(request):
 		# matter += '\n\n'
 		# matter += 'Thanks\n'
 		# matter += 'Regards\n'
-		# matter += 'Team Hostel Web Committee' 
+		# matter += 'Team Hostel Web Committee'
 		# send_mail(
 		# 'Grievance Posted Successfully',
 		# matter,

@@ -31,7 +31,7 @@ urlpatterns = [
     url(r'^student/profile/$', views.StudentProfile, name='studentprofile'),
     url(r'^student/login/$', views.StudentLogin, name='studentlogin'),
     url(r'^student/changepassword/$', views.ChangePassword, name='changepass'),
-    url(r'^student/forgotpass/$', views.ForgotPassword, name='forgotpass'),
+    url(r'^student/forgot-password/$', views.ForgotPassword, name='forgot-password'),
     url(r'^student/register/$', views.StudentRegister, name='studentregister'),
     url(r'^student/checkmail/$', views.CheckMailView),
     url(r'^student/addgrievance/$', views.AddGrievance, name='addgrievance'),
