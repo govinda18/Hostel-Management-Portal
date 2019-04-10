@@ -7,7 +7,7 @@
       {% load staticfiles %}
     <title>Profile Page</title>
     <link href={% static "css/style.css" %} type="text/css" rel="stylesheet">
- 
+
   </head>
   <body>
 
@@ -15,7 +15,7 @@
 
 
 <div class="container">
-  
+
         <div class="row">
 
         <br><br>
@@ -41,9 +41,9 @@
 
  <div class="col-md-9  admin-content" id="change-password">
                 <form  method="post" action="/student/profile/">
-                        
+
                     {% csrf_token %}
-           
+
                     <div class="panel panel-info" style="margin: 1em;">
                         <div class="panel-heading">
                             <h3 class="panel-title"><label for="new_password" class="control-label panel-title">Name</label></h3>
@@ -96,7 +96,7 @@
                                     <option value="{{branch.id}}">{{branch}}</option>
                                     {% endfor %}
                                      </select>
-                                    
+
                                 </div>
                             </div>
 
@@ -109,7 +109,7 @@
                         <div class="panel-body">
                             <div class="form-group">
                                 <div class="col-sm-10">
-                                     <input type="number" min="1" max="5" class="form-control" name="year" id="year" value={{profile.year}} > 
+                                     <input type="number" min="1" max="5" class="form-control" name="year" id="year" value={{profile.year}} >
                                 </div>
                             </div>
 
@@ -128,7 +128,7 @@
                                     <option value="{{hostel.id}}">{{hostel}}</option>
                                     {% endfor %}
                                      </select>
-                            
+
                                 </div>
                             </div>
 
@@ -141,15 +141,15 @@
                         <div class="panel-body">
                             <div class="form-group">
                                 <div class="col-sm-10">
-                                     <input type="text" class="form-control" name="room" id="room" value="{{profile.room_no}} " > 
+                                     <input type="text" class="form-control" name="room" id="room" value="{{profile.room_no}} " >
                                 </div>
                             </div>
 
                         </div>
                     </div>
-             
 
-             
+
+
                     <div class="panel panel-info border" style="margin: 1em;">
                         <div class="panel-body">
                             <div class="form-group">
@@ -168,40 +168,10 @@
 </body>
 </html>
 <!-- Footer -->
-<footer class="page-footer font-small stylish-color-dark pt-4" style="background-color: #ee6e73; color: #FFF">
-
-    
-    <!-- Call to action -->
-    <ul class="list-unstyled list-inline text-center py-2">
-      <li class="list-inline-item">
-        <h5 class="mb-1">Designed by Club of Programmers, IIT (BHU), Varanasi</h5>
-      </li>
-    </ul>
-
-    <!-- Social buttons -->
-    <ul class="list-unstyled list-inline text-center">
-      <li class="list-inline-item">
-        <a href="http://www.copsiitbhu.co.in/" target="_blank" class="btn-floating btn-fb mx-1">
-          <i class="fa fa-link"> </i>
-        </a>
-      </li>
-      <li class="list-inline-item">
-        <a href="http://www.facebook.com/cops.iitbhu/" target="_blank" class="btn-floating btn-tw mx-1">
-          <i class="fa fa-facebook"> </i>
-        </a>
-      </li>
-      <li class="list-inline-item">
-        <a href="#" class="btn-floating btn-gplus mx-1">
-          <i class="fa fa-google-plus"> </i>
-        </a>
-      </li>
-    </ul>
-    <!-- Social buttons -->
-
+<footer class="page-footer font-small stylish-color-dark pt-4" style="background-color: #ee6e73; color: #FFF; padding: 1%;">
     <!-- Copyright -->
-    <div class="footer-copyright text-center py-3">© 2018 Copyright:
+    <div class="footer-copyright text-center py-3">2019 Copyright &copy;
       Hostel Committee, IIT (BHU), Varanasi
     </div>
     <!-- Copyright -->
-
 </footer>
