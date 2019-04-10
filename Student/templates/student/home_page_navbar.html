@@ -15,7 +15,7 @@
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
       <style type="text/css">
-          .footer 
+          .footer
           {
             left: 0;
             bottom: 0;
@@ -24,7 +24,7 @@
             color: #FFF;
             text-align: center;
           }
-         .navbar-inverse 
+         .navbar-inverse
          {
          background-color: #ee6e73;
          border-color: #FFF;
@@ -41,13 +41,14 @@
          .navbar-inverse .navbar-nav .open .dropdown-menu>li>a
          {
          background-color: #ee6e73;
-         color: #FFF !important;          
+         color: #FFF !important;
          }
-         html 
+         html
          {
           scroll-behavior: smooth;
+          font-size: 120%;
          }
-         #myBtn 
+         #myBtn
          {
           display: none;
           position: fixed;
@@ -63,7 +64,7 @@
           padding: 15px;
           border-radius: 4px;
          }
-         #myBtn:hover 
+         #myBtn:hover
          {
           background-color: #555;
          }
@@ -79,7 +80,7 @@
                  e.preventDefault();
                  alert("Disabled Contact Admin !!!");
              });
-         
+
              //Disable mouse right click
              $("body").on("contextmenu",function(e){
                  alert("Disabled Contact Admin !!!");
@@ -99,7 +100,7 @@
                <a href = "/"><img src="/static/images/iitbhu-logo.png" height="50"></a>
             </div>
             <div class="collapse navbar-collapse">
-               <ul class="nav navbar-nav ">
+               <ul class="nav navbar-nav " style="font-size:120%;">
                   <li ><a href="/"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>&nbspHome</a></li>
                   <li><a href="/#hostel_section"><span class="glyphicon glyphicon-list"></span> &nbspHostels</a></li>
                   {% if user.is_authenticated %}
@@ -138,23 +139,23 @@
                   </li>
                   {% else %}
                   <li><a href="/logout/">Logout</a></li>
-                  {% endif %}                  
+                  {% endif %}
                </ul>
             </div>
          </div>
-      </nav>    
+      </nav>
 {% if messages %}
 <div class="container" style="max-width:400px">
   {% for message in messages %}
   <div style="text-align:center" {% if message.tags == 'error' %} class="alert alert-danger" role="alert" {% else %} class="alert alert-success" {% endif %}>{{ message|safe }}</div>
   {% endfor %}
 </div>
-{% endif %}  
+{% endif %}
 
       {% block body %}
       {% endblock %}
-      
 
-   
+
+
 </body>
 </html>

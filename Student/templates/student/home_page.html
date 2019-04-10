@@ -37,32 +37,30 @@
    </a>
 </div>
 <div class="panel panel-default " style="margin-left: 2%;margin-right: 2% ;margin-top: -18%">
-   <div class="panel panel-heading" style="background-color:#ee6e73; color:#FFF;">&nbsp;Hostel Management System</div>
-   <div class="panel panel-body" style="background-color:rgba(128, 128, 128, 0.08);">
+   <div class="panel panel-heading" style="background-color:#ee6e73; color:#FFF;font-size: 120%;">&nbsp;Hostel Management System</div>
       <div class="container-fluid">
          <div class="row">
             <!-------post----->
             <div class="col-md-12">
-               <p>Hostel management is an essential feature in both large and small institutions. Hostel management involves efficiently managing several aspects of the entire residential facility and reducing staff and manual work.
+               <p style="    padding: 1%;font-size: 120%;">Hostel management is an essential feature in both large and small institutions. Hostel management involves efficiently managing several aspects of the entire residential facility and reducing staff and manual work.
                   The hostel management system has been created to help the college or school staff and the student to easily register and use the facilities while keeping track of their activities within the premises.
                   The hostel management system consists of various modules that begin with the registration .
                </p>
             </div>
          </div>
       </div>
-   </div>
 </div>
-<div style="margin-left: 2%;margin-right: 2%" >
+<div style="margin-left: 2%;margin-right: 2%; font-size:120%;" >
    <div class="panel panel-default col-sm-4" >
       <div class="panel panel-heading " style="background-color:#ee6e73; color:#FFF;">&nbsp;Latest Information And Notices</div>
-      <div class="panel panel-body" style="background-color:rgba(128, 128, 128, 0.08);">
+      <div class="panel panel-body" style="background-color:rgba(128, 128, 128, 0.03);">
          <div class="container-fluid">
             <div class="row">
                <!-------post----->
                <div class="col-md-12" style="margin-left: 10px; " >
                   <p style="height:226px ;overflow-y:scroll">
                      {%  for list  in notifications %}
-                     <a href="{{list.link}}" target="_blank">{{list.message}} - {{list.hostel}}</a><br>
+                     <i class="fa fa-angle-double-right"></i> <a href="{{list.link}}" target="_blank">{{list.message}} - {{list.hostel}}</a><br>
                      {% endfor %}
                   </p>
                </div>
@@ -72,17 +70,17 @@
    </div>
    <div class="panel panel-default col-sm-4" >
       <div class="panel panel-heading " style="background-color:#ee6e73; color:#FFF;">&nbsp;Links</div>
-      <div class="panel panel-body" style="background-color:rgba(128, 128, 128, 0.08);">
+      <div class="panel panel-body" style="background-color:rgba(128, 128, 128, 0.03);">
          <div class="container-fluid">
             <div class="row">
                <!-------post----->
                <div class="col-md-12 " >
                   <div style="height:236px;">
-                     <span class="glyphicon glyphicon-hand-right"> <a style="color: black" href="https://drive.google.com/file/d/0B081mTQyGdy5VHVyRnVsMm5xWXMyS1RQSXFONlUzeXZUb29B/view?usp=sharing" target="_blank"> Hostel Committee</a></span><br><br>
-                     <span class="glyphicon glyphicon-hand-right"> <a   style="color: black" href="https://drive.google.com/file/d/1mL03zdBFMtQwzES4tRRhdXG1lZVI_UFi/view?usp=sharing" target="_blank"> Hostel Maintenance Policy </a></span><br><br>
-                     <span class="glyphicon glyphicon-hand-right"> <a  style="color: black"  href="https://drive.google.com/file/d/11v7vp54PRmDYR708BYvJcagKk_QzIRNH/view?usp=sharing" target="_blank"> Mess-Canteen Policy </a></span><br><br>
-                     <span class="glyphicon glyphicon-hand-right"> <a  style="color: black"  href="https://drive.google.com/file/d/1oOFn3R9fEze3cZ_rCX3b9xSNnTBhg8sY/view?usp=sharing" target="_blank"> Academic Office Contacts </a></span><br><br>
-                     <span class="glyphicon glyphicon-hand-right"> <a  style="color: black"  href="https://drive.google.com/file/d/0B11jnltBT3TFY0xqT2pOX2FMbnlhRlg0UVd3NEtOaG1iUzZ3/view?usp=sharing" target="_blank"> IWD staff contacts </a></span><br><br>
+                     <i class="fa fa-angle-double-right"></i> <a style="color: black" href="https://drive.google.com/file/d/0B081mTQyGdy5VHVyRnVsMm5xWXMyS1RQSXFONlUzeXZUb29B/view?usp=sharing" target="_blank"> Hostel Committee</a></span><br><br>
+                     <i class="fa fa-angle-double-right"></i> <a   style="color: black" href="https://drive.google.com/file/d/1mL03zdBFMtQwzES4tRRhdXG1lZVI_UFi/view?usp=sharing" target="_blank"> Hostel Maintenance Policy </a></span><br><br>
+                     <i class="fa fa-angle-double-right"></i> <a  style="color: black"  href="https://drive.google.com/file/d/11v7vp54PRmDYR708BYvJcagKk_QzIRNH/view?usp=sharing" target="_blank"> Mess-Canteen Policy </a></span><br><br>
+                     <i class="fa fa-angle-double-right"></i> <a  style="color: black"  href="https://drive.google.com/file/d/1oOFn3R9fEze3cZ_rCX3b9xSNnTBhg8sY/view?usp=sharing" target="_blank"> Academic Office Contacts </a></span><br><br>
+                     <i class="fa fa-angle-double-right"></i> <a  style="color: black"  href="https://drive.google.com/file/d/0B11jnltBT3TFY0xqT2pOX2FMbnlhRlg0UVd3NEtOaG1iUzZ3/view?usp=sharing" target="_blank"> IWD staff contacts </a></span><br><br>
                   </div>
                </div>
             </div>
@@ -91,7 +89,7 @@
    </div>
    <div style=""class="panel panel-default col-sm-4" >
       <div class="panel panel-heading" style="background-color:#ee6e73; color:#FFF;">&nbsp;Our Aim</div>
-      <div class="panel panel-body" style="background-color:rgba(128, 128, 128, 0.08);">
+      <div class="panel panel-body" style="background-color:rgba(128, 128, 128, 0.03);">
          <div class="container-fluid">
             <div class="row">
                <!-------post----->
@@ -110,14 +108,14 @@
 </div>
 <div style="margin-left: 2%;margin-right: 2%" >
    <div class="panel panel-default " >
-      <div class="panel panel-body" style="background-color:rgba(128, 128, 128, 0.08);" id="hostel_section">
+      <div class="panel panel-body" style="background-color:rgba(128, 128, 128, 0.03);" id="hostel_section">
          <div class="container-fluid">
             <div class="row">
                {% for hostel in hostels %}
                <a href="/hostel/{{hostel.id}}">
                   <div class="col-sm-4">
-                     <h4>{{hostel.hostel_name}}</h4>
-                     <img src="{{hostel.flag_image.url}}" style="width: 180px;height: 180px;">
+                     <h4 style="text-align:center;">{{hostel.hostel_name}}</h4>
+                     <img src="{{hostel.flag_image.url}}" style="width: 180px;height: 180px;display:table;margin:auto;border-radius:8%;margin-bottom:12%;">
                   </div>
                </a>
                {% endfor %}
@@ -128,38 +126,10 @@
 </div>
   {% endblock %}
 <!-- Footer -->
-<footer class="page-footer font-small stylish-color-dark pt-4" style="background-color: #ee6e73; color: #FFF">
-
-
-    <!-- Call to action -->
-    <ul class="list-unstyled list-inline text-center py-2">
-      <li class="list-inline-item">
-        <h5 class="mb-1">Designed by Club of Programmers, IIT (BHU), Varanasi</h5>
-      </li>
-    </ul>
-
-    <!-- Social buttons -->
-    <ul class="list-unstyled list-inline text-center">
-      <li class="list-inline-item">
-        <a href="http://www.copsiitbhu.co.in/" target="_blank" class="btn-floating btn-fb mx-1">
-          <i class="fa fa-link"> </i>
-        </a>
-      </li>
-      <li class="list-inline-item">
-        <a href="http://www.facebook.com/cops.iitbhu/" target="_blank" class="btn-floating btn-tw mx-1">
-          <i class="fa fa-facebook"> </i>
-        </a>
-      </li>
-      <li class="list-inline-item">
-        <a href="#" class="btn-floating btn-gplus mx-1">
-          <i class="fa fa-google-plus"> </i>
-        </a>
-      </li>
-    </ul>
-    <!-- Social buttons -->
+<footer class="page-footer font-small stylish-color-dark pt-4" style="background-color: #ee6e73; color: #FFF;padding:1%;">
 
     <!-- Copyright -->
-    <div class="footer-copyright text-center py-3">© 2018 Copyright:
+    <div class="footer-copyright text-center py-3">2018 Copyright &copy;
       Hostel Committee, IIT (BHU), Varanasi
     </div>
     <!-- Copyright -->
