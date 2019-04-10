@@ -306,3 +306,7 @@ figcaption.figc{
     .carousel-inner {
       height: 60vh;
     }
+
+    .panel {
+      border: none;
+    }

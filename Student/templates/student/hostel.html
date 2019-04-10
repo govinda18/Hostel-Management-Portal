@@ -28,6 +28,9 @@
 #myBtn:hover {
   background-color: #555;
 }
+.panel {
+  border: none;
+}
   </style>
 
 
@@ -71,18 +74,18 @@
     <span class="sr-only">Next</span>
   </a>
 </div>
-<div class="panel panel-default " style="margin-left: 2%;margin-right: 2% ;margin-top: -18%">
+<div class="panel-default " style="margin-left: 2%;margin-right: 2% ;margin-top: -18%">
 
 
 
-              <div class="panel panel-body" style="background-color:rgba(128, 128, 128, 0.08);">
+              <div class="panel panel-body" style="background-color:rgba(128, 128, 128, 0.08);border:none;">
                 <div class="container-fluid">
 
 
                     <div class="row">
                     <!-------post----->
                       <div class="col-md-12">
-                        <center><h4>{{hostel.hostel_name}} Hostel</h4></center>
+                        <center><h3>{{hostel.hostel_name}} Hostel</h3></center>
                       </div>
 
                     </div>
@@ -109,7 +112,7 @@
                               <p style="height:226px ;overflow-y:scroll">
 
                      {%  for list  in notifications %}
-                    <a href="{{list.link}}" target="_blank">{{list.message}}</a>&nbsp;{% if isadmin %}<a href="/hostel/removenotification/{{list.id}}/"><i class="fa fa-remove" style="color: red;"></i></a>{% endif %}<br>
+                    <i class="fa fa-angle-double-right"></i> <a href="{{list.link}}" target="_blank">{{list.message}}</a>&nbsp;{% if isadmin %}<a href="/hostel/removenotification/{{list.id}}/"><i class="fa fa-remove" style="color: red;"></i></a>{% endif %}<br>
                     {% endfor %}
                       </p>    </div>
                     </div>
@@ -135,25 +138,25 @@
 
 <div style="height:236px;overflow-y:scroll">
     {% if hostel.student_list %}
-    <span class="glyphicon glyphicon-hand-right"> <a target="_blank" style="color: black" href="{{hostel.student_list}}"> Student List</a></span><br><br>
+    <i class="fa fa-angle-double-right"></i> <a target="_blank" style="color: black" href="{{hostel.student_list}}">  Student List</a></span><br><br>
     {% endif %}
     {% if hostel.mess_bill_link %}
-    <span class="glyphicon glyphicon-hand-right"> <a target="_blank" style="color: black" href="{{hostel.mess_bill_link}}"> Mess Bills</a></span><br><br>
+    <i class="fa fa-angle-double-right"></i> <a target="_blank" style="color: black" href="{{hostel.mess_bill_link}}">  Mess Bills</a></span><br><br>
     {% endif %}
     {% if hostel.HEC %}
-    <span class="glyphicon glyphicon-hand-right"> <a target="_blank" style="color: black" href="{{hostel.HEC}}"> Hostel Election Committee</a></span><br><br>
+    <i class="fa fa-angle-double-right"></i> <a target="_blank" style="color: black" href="{{hostel.HEC}}">  Hostel Election Committee</a></span><br><br>
     {% endif %}
     {% if hostel.wardens %}
-    <span class="glyphicon glyphicon-hand-right"> <a target="_blank" style="color: black" href="{{hostel.wardens}}"> Warden Contacts</a></span><br><br>
+    <i class="fa fa-angle-double-right"></i> <a target="_blank" style="color: black" href="{{hostel.wardens}}">  Warden Contacts</a></span><br><br>
     {% endif %}
     {% if hostel.care_takers %}
-    <span class="glyphicon glyphicon-hand-right"> <a target="_blank" style="color: black" href="{{hostel.care_takers}}"> Care Takers Contacts</a></span><br><br>
+    <i class="fa fa-angle-double-right"></i> <a target="_blank" style="color: black" href="{{hostel.care_takers}}">  Care Takers Contacts</a></span><br><br>
     {% endif %}
     {% if hostel.maintainance_workers %}
-    <span class="glyphicon glyphicon-hand-right"> <a target="_blank" style="color: black" href="{{hostel.maintainance_workers}}"> Maintainance Workers Contacts</a></span><br><br>
+    <i class="fa fa-angle-double-right"></i> <a target="_blank" style="color: black" href="{{hostel.maintainance_workers}}">  Maintainance Workers Contacts</a></span><br><br>
     {% endif %}
     {% if hostel.duties_of_hec %}
-    <span class="glyphicon glyphicon-hand-right"> <a target="_blank" style="color: black" href="{{hostel.duties_of_hec}}"> HEC Duties</a></span><br><br>
+    <i class="fa fa-angle-double-right"></i> <a target="_blank" style="color: black" href="{{hostel.duties_of_hec}}">  HEC Duties</a></span><br><br>
     {% endif %}
 
 
@@ -186,27 +189,27 @@
 <h3>{{hostel.hostel_name}}</h3>
 <ul>
   <li>
-    <i class="fa fa-hand-o-right"></i>   <b>Location</b>  - <a target="_blank" href="{{hostel.location}}"> Map link</a>
+    <i class="fa fa-angle-double-right"></i>   <b>Location</b>  - <a target="_blank" href="{{hostel.location}}"> Map link</a>
   </li>
   <li>
-    <i class="fa fa-hand-o-right"></i>   <b>Number of rooms</b>  -  {{hostel.rooms}}
+    <i class="fa fa-angle-double-right"></i>   <b>Number of rooms</b>  -  {{hostel.rooms}}
   </li>
   <li>
-    <i class="fa fa-hand-o-right"></i>   <b>Number of Students</b>  -  {{hostel.number_of_students}}
+    <i class="fa fa-angle-double-right"></i>   <b>Number of Students</b>  -  {{hostel.number_of_students}}
     </li>
     <li>
     {% if hostel.mess1_maharaj_name %}
-    <i class="fa fa-hand-o-right"></i>   <b>Mess 1</b>  -  {{hostel.mess1_maharaj_name}}
+    <i class="fa fa-angle-double-right"></i>   <b>Mess 1</b>  -  {{hostel.mess1_maharaj_name}}
     {% endif %}
 </li>
 <li>
     {% if hostel.mess2_maharaj_name %}
-    <i class="fa fa-hand-o-right"></i>   <b>Mess 2</b>  -  {{hostel.mess2_maharaj_name}}
+    <i class="fa fa-angle-double-right"></i>   <b>Mess 2</b>  -  {{hostel.mess2_maharaj_name}}
     {% endif %}
 </li>
 <li>
     {% if hostel.mess3_maharaj_name %}
-    <i class="fa fa-hand-o-right"></i>   <b>Mess 3</b>  -  {{hostel.mess3_maharaj_name}}
+    <i class="fa fa-angle-double-right"></i>   <b>Mess 3</b>  -  {{hostel.mess3_maharaj_name}}
     {% endif %}
     </li>
 </ul>
@@ -232,7 +235,7 @@
      <div class="panel panel-default " >
 
 
-              <div class="panel panel-body" style="background-color:rgba(128, 128, 128, 0.08);" id="hostel_section">
+              <div class="panel-body" style="background-color:rgba(128, 128, 128, 0.08);" id="hostel_section">
                 <div class="container-fluid">
                   <div class="row">
                     {% for hostel in hostels %}
@@ -263,10 +266,9 @@
 </body>
 </html>
 
- <h3 id="not" align="center">Staff</h3>
+ <h3 id="not" align="center">Hostel Staff</h3>
         <div style="margin-left: 2%;margin-right: 2%" >
    <div class="panel panel-default " >
-      <div class="panel panel-body" style="background-color:rgba(128, 128, 128, 0.08);" id="hostel_section">
          <div class="container-fluid">
             <div class="row">
                {% for member in staff %}
@@ -281,7 +283,6 @@
             </div>
          </div>
       </div>
-   </div>
 </div>
 
 
@@ -312,38 +313,10 @@ function topFunction() {
   </body>
 </html>
 <!-- Footer -->
-<footer class="page-footer font-small stylish-color-dark pt-4" style="background-color: #ee6e73; color: #FFF">
-
-
-    <!-- Call to action -->
-    <ul class="list-unstyled list-inline text-center py-2">
-      <li class="list-inline-item">
-        <h5 class="mb-1">Designed by Club of Programmers, IIT (BHU), Varanasi</h5>
-      </li>
-    </ul>
-
-    <!-- Social buttons -->
-    <ul class="list-unstyled list-inline text-center">
-      <li class="list-inline-item">
-        <a href="http://www.copsiitbhu.co.in/" target="_blank" class="btn-floating btn-fb mx-1">
-          <i class="fa fa-link"> </i>
-        </a>
-      </li>
-      <li class="list-inline-item">
-        <a href="http://www.facebook.com/cops.iitbhu/" target="_blank" class="btn-floating btn-tw mx-1">
-          <i class="fa fa-facebook"> </i>
-        </a>
-      </li>
-      <li class="list-inline-item">
-        <a href="#" class="btn-floating btn-gplus mx-1">
-          <i class="fa fa-google-plus"> </i>
-        </a>
-      </li>
-    </ul>
-    <!-- Social buttons -->
+<footer class="page-footer font-small stylish-color-dark pt-4" style="background-color: #ee6e73; color: #FFF; padding: 1%;">
 
     <!-- Copyright -->
-    <div class="footer-copyright text-center py-3">© 2018 Copyright:
+    <div class="footer-copyright text-center py-3">2019 Copyright &copy;
       Hostel Committee, IIT (BHU), Varanasi
     </div>
     <!-- Copyright -->
