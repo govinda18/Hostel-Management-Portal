@@ -22,7 +22,7 @@
         min-height: 38px;
         border-radius: 2px;
     }
-    .btn {        
+    .btn {
         font-size: 15px;
         font-weight: bold;
     }
@@ -32,16 +32,17 @@
 
 {% include 'student/home_page_navbar.html' %}
 <br>
-<div class="container-fluid">
+<div class="container-fluid" style="margin:auto;display:table;">
         <div class="row">
-            <div class="col-sm-12 col-md-7">
+            <div class="col-sm-12 col-md-12">
                 <div class="panel panel-default">
-                    <div class="panel-body">
+                    <div class="panel-body" style="padding: 5px 25px">
                         <form class="login-form" action= "/hostel/login/" method="post" enctype="multipart/form-data">
                         {% csrf_token %}
-                            <h3>Hostel Log In</h3>
+                            <h3>Hostel Port Login (Staff Only)</h3>
+                            <hr>
                             <div class="form-group">
-                                <label class="form-group">Login-Id</label>
+                                <label class="form-group">Hostel Login ID</label>
                                 <input type="text" name="form-username" placeholder="Hostel-ID..." class="form-username form-control" id="form-username" required>
                             </div>
 
@@ -49,11 +50,10 @@
                                 <label class="form-group">Password</label>
                                 <input type="password" name="form-password" placeholder="Password..." class="form-password form-control" id="form-password" required>
                             </div>
-                            
+
                             <div class="form-group">
-                                <div class="col-sm-offset-2 col-sm-10">
                                     <button type="submit" class="btn btn-success">Submit</button>
-                                </div>
+
                             </div>
                         </form>
 
@@ -66,40 +66,10 @@
 
 </body>
 <!-- Footer -->
-<footer class="page-footer font-small stylish-color-dark pt-4" style="background-color: #ee6e73; color: #FFF">
-
-    
-    <!-- Call to action -->
-    <ul class="list-unstyled list-inline text-center py-2">
-      <li class="list-inline-item">
-        <h5 class="mb-1">Designed by Club of Programmers, IIT (BHU), Varanasi</h5>
-      </li>
-    </ul>
-
-    <!-- Social buttons -->
-    <ul class="list-unstyled list-inline text-center">
-      <li class="list-inline-item">
-        <a href="http://www.copsiitbhu.co.in/" target="_blank" class="btn-floating btn-fb mx-1">
-          <i class="fa fa-link"> </i>
-        </a>
-      </li>
-      <li class="list-inline-item">
-        <a href="http://www.facebook.com/cops.iitbhu/" target="_blank" class="btn-floating btn-tw mx-1">
-          <i class="fa fa-facebook"> </i>
-        </a>
-      </li>
-      <li class="list-inline-item">
-        <a href="#" class="btn-floating btn-gplus mx-1">
-          <i class="fa fa-google-plus"> </i>
-        </a>
-      </li>
-    </ul>
-    <!-- Social buttons -->
-
+<footer class="page-footer font-small stylish-color-dark pt-4" style="background-color: #ee6e73; color: #FFF; padding: 1%;">
     <!-- Copyright -->
-    <div class="footer-copyright text-center py-3">© 2018 Copyright:
+    <div class="footer-copyright text-center py-3">2019 Copyright &copy;
       Hostel Committee, IIT (BHU), Varanasi
     </div>
     <!-- Copyright -->
-
 </footer>
