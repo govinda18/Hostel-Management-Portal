@@ -33,14 +33,15 @@
   {% include 'student/home_page_navbar.html' %}
 <br>
 
-<div class="container-fluid">
+<div class="container-fluid" style="margin:auto;display:table;">
         <div class="row">
-            <div class="col-sm-12 col-md-7">
+            <div class="col-sm-12 col-md-12">
                 <div class="panel panel-default">
                     <div class="panel-body">
                         <form class="login-form" action="/student/register/" method="post">
                         {% csrf_token %}
-                            <h4> Register </h4>
+                            <h3>Student Registration</h3>
+                            <hr>
                             <div class="form-group">
                                 <label class="control-label ">First Name</label>
                                 <input type="text" name="form-first-name" placeholder="First Name..." class="form-first-name form-control" id="form-first-name">
@@ -91,11 +92,10 @@
                                 {% endfor %}
                               </select>
 		                        </div>
-                            <h5><a href="/student/login">Login</a></h5>
+                            <h5><a href="/student/login">Already registered? Login here!</a></h5>
                             <div class="form-group">
-                                <div class="col-sm-offset-2 col-sm-10">
                                     <button type="submit" class="btn btn-success">Submit</button>
-                                </div>
+
                             </div>
                         </form>
 

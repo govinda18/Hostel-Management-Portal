@@ -29,17 +29,18 @@
 </head>
 <body>
 
-<div class="container-fluid">
+<div class="container-fluid" style="margin:auto;display:table;">
         <div class="row">
-            <div class="col-sm-12 col-md-7">
+            <div class="col-sm-12 col-md-12">
                 <div class="panel panel-default">
                     <div class="panel-body">
                         <form class="login-form" action="/student/login/" method="post" enctype="multipart/form-data">
                         {% csrf_token %}
                             <h3>Student Log In</h3>
+                            <hr>
 
                             <div class="form-group">
-                                <label class="control-label form-username">Email</label>
+                                <label class="control-label form-username">Institute Email Address</label>
                                 <input type="text" name="form-email" placeholder="Email..." class="form-email form-control" id="form-email">
                             </div>
 
@@ -50,9 +51,7 @@
                             <a href="/student/register/">Register </a>/
                             <a href="/student/forgotpass/">Forgot Password </a><br><br>
                             <div class="form-group">
-                                <div class="col-sm-offset-2 col-sm-10">
                                     <button type="submit" class="btn btn-success">Submit</button>
-                                </div>
                             </div>
                         </form>
 
