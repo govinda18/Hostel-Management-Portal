@@ -287,8 +287,8 @@ def StudentRegister(request):
 			if item not in request.POST:
 				messages.error(request, "Incomplete Information.")
 				return redirect("/student/register")
-		mail=request.POST['form-email'].strip()
-		mail=mail.lower()
+		# mail=request.POST['form-email'].strip()
+		# mail=mail.lower()
 		try:
 			player = Profile.objects.get(emailid = mail)
 		except:
@@ -297,6 +297,7 @@ def StudentRegister(request):
 		if (player is not None):
 			messages.error(request, "Email ID has already been registered.")
 			return redirect("/student/login/")
+		print(mail)
 		if '@itbhu.ac.in' or '@iitbhu.ac.in' not in mail:
 			messages.error(request,"Email address is not valid. Please use mail id with @itbhu.ac.in or @iitbhu.ac.in only.")
 			return redirect("/student/register")
