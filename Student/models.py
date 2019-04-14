@@ -57,6 +57,12 @@ class Branch(models.Model):
 	def __str__(self):
 		return self.name
 
+class Course(models.Model):
+	name = models.CharField(max_length=100, default='B.tech')
+
+	def __str__(self):
+		return self.name
+
 class Profile(models.Model):
     rollno=models.PositiveIntegerField(default=0)
     user_ref=models.OneToOneField(User,on_delete=models.CASCADE)
@@ -149,3 +155,16 @@ class LostFound(models.Model):
 
 	def __str__(self):
 		return self.subject + ' - ' + ("Found" if self.label else "Lost")
+
+class Contributor(models.Model):
+	name = models.CharField(max_length = 150)
+	imageurl = models.CharField(max_length = 300)
+	rollno = models.PositiveIntegerField(default=0)
+	branch = models.ForeignKey(Branch, on_delete=models.CASCADE, null=True)
+	course = models.ForeignKey(Course, on_delete=models.CASCADE, null=True)
+	email = models.CharField(max_length = 150)
+	github = models.CharField(max_length = 150)
+	linkedin = models.CharField(max_length = 150)
+
+	def __str__(self):
+		return self.name

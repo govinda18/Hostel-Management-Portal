@@ -691,4 +691,7 @@ def ViewLostFoundDetail(request, pk):
 		})
 
 def Credits(request):
-	return render(request, 'student/credits.html')
+	contributors = Contributor.objects.all()
+	return render(request, 'student/credits.html', context = {
+		"contributors" : contributors
+		})

@@ -27,48 +27,35 @@ text-align: center;
       padding: 1%;
   color: #EE6E73;
 }
+.headingh4 {
+text-align:center;
+letter-spacing: 1px;
+text-transform: uppercase;
+}
 </style>
 {% endblock %}
 
 {% block body %}
-<h3 style="text-align:center">Credits</h3>
+<h3 class="headingh4">Portal Development Credits</h3>
 <hr>
 <div class="container">
   <div class="row">
+    {% for contributor in contributors %}
     <div class="col-sm-6 credits">
-      <img src="https://avatars3.githubusercontent.com/u/20956124?s=400&u=e80af7cd0e8af085d68b24b5fde926981ff02785&v=4">
-      <h4>Jogendra Kumar</h4>
-      <p>Roll No. 15173009</p>
-      <p>Engineering Physics (IDD)</p>
+      <img src="{{contributor.imageurl}}">
+      <h4> {{contributor.name}}</h4>
+      <p>Roll No. {{contributor.rollno}}</p>
+      {% if contributor.branch and contributor.course %}
+      <p>{{ contributor.branch }} ({{ contributor.course }})</p>
+      {% endif %}
       <p>
-        <a href="mailto:jogendra.kumar.phy15@iitbhu.ac.in" target="_blank"><i class="fa fa-envelope"></i><a/>
-        <a href="https://github.com/jogendra" target="_blank"><i class="fa fa-github"></i><a/>
-        <a href="https://www.linkedin.com/in/jogendrasingh24/" target="_blank"><i class="fa fa-linkedin"></i></a>
+        <a href="mailto:{{ contributor.email }}" target="_blank"><i class="fa fa-envelope"></i><a/>
+        <a href="{{ contributor.github }}" target="_blank"><i class="fa fa-github"></i><a/>
+        <a href="{{ contributor.linkedin }}" target="_blank"><i class="fa fa-linkedin"></i></a>
       </p>
     </div>
+    {% endfor %}
 
-    <div class="col-sm-6 credits">
-      <img src="https://avatars3.githubusercontent.com/u/20956124?s=400&u=e80af7cd0e8af085d68b24b5fde926981ff02785&v=4">
-      <h4>Jogendra Kumar</h4>
-      <p>Roll No. 15173009</p>
-      <p>Engineering Physics (IDD)</p>
-      <p>
-        <a href="mailto:jogendra.kumar.phy15@iitbhu.ac.in" target="_blank"><i class="fa fa-envelope"></i><a/>
-        <a href="https://github.com/jogendra" target="_blank"><i class="fa fa-github"></i><a/>
-        <a href="https://github.com/jogendra" target="_blank"><i class="fa fa-linkedin"></i></a>
-      </p>
-    </div>
-    <div class="col-sm-6 credits">
-      <img src="https://avatars3.githubusercontent.com/u/20956124?s=400&u=e80af7cd0e8af085d68b24b5fde926981ff02785&v=4">
-      <h4>Jogendra Kumar</h4>
-      <p>Roll No. 15173009</p>
-      <p>Engineering Physics (IDD)</p>
-      <p>
-        <a href="mailto:jogendra.kumar.phy15@iitbhu.ac.in" target="_blank"><i class="fa fa-envelope"></i><a/>
-        <a href="https://github.com/jogendra" target="_blank"><i class="fa fa-github"></i><a/>
-        <a href="https://github.com/jogendra" target="_blank"><i class="fa fa-linkedin"></i></a>
-      </p>
-    </div>
   </div>
 </div>
 {% endblock %}
