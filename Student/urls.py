@@ -42,4 +42,5 @@ urlpatterns = [
     url(r'^lostandfound/$', views.ViewLostFound, name='viewlostfound'),
     url(r'^addlostfound/$', views.AddLostFound, name='addlostfound'),
     url(r'^lostfound/(?P<pk>[0-9]+)/$', views.ViewLostFoundDetail, name='viewlostfound'),
+    url(r'^credits/$', views.Credits, name='credits'),
 ]

@@ -689,3 +689,6 @@ def ViewLostFoundDetail(request, pk):
 		"profile" : userprofile,
 		"isadmin" : isadmin
 		})
+
+def Credits(request):
+	return render(request, 'student/credits.html')
