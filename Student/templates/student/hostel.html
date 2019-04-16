@@ -31,7 +31,36 @@
 .panel {
   border: none;
 }
-  </style>
+
+.credits {
+padding: 2%;
+  }
+.credits img {
+height: 150px;
+display: table;
+margin: auto;
+width: 150px;
+border: 2px solid #EE6E73;
+border-radius: 50%;
+}
+.credits p {
+text-align: center;
+}
+
+.credits h4 {
+text-align: center;
+}
+.credits p a {
+      padding: 1%;
+  color: #EE6E73;
+}
+.headingh4 {
+text-align:center;
+letter-spacing: 1px;
+text-transform: uppercase;
+}
+
+</style>
 
 
 </head>
@@ -267,22 +296,20 @@
 </html>
 
  <h3 id="not" align="center">Hostel Staff</h3>
-        <div style="margin-left: 2%;margin-right: 2%" >
-   <div class="panel panel-default " >
-         <div class="container-fluid">
-            <div class="row">
-               {% for member in staff %}
-                  <div class="col-sm-4">
-                     <img src="{{member.profilepic.url}}" style="width: 180px;height: 180px;">
-                     <h4>{{member.name}}</h4>
-                     <h4>{{member.post}}</h4>
-                     <h5>+91 {{member.contact_no}}</h5>
-                     <a href="mailto:{{member.emailid}}" target="_blank"><h6>{{member.emailid}}</h6></a>
-                  </div>
-               {% endfor %}
-            </div>
-         </div>
-      </div>
+<hr>
+<div class="container">
+  <div class="row">
+    {% for member in staff %}
+    <div class="col-sm-4 credits">
+      <img src="{{member.profilepic}}">
+      <h4> {{member.name}}</h4>
+      <p>{{member.post}}</p>
+      <p>+91 {{member.contact_no}}</p>
+      <a href="mailto:{{member.emailid}}" target="_blank"><p>{{member.emailid}}</p></a>
+    </div>
+    {% endfor %}
+
+  </div>
 </div>
 
 
