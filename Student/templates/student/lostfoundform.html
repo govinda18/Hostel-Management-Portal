@@ -6,7 +6,7 @@
 
 <style type="text/css">
     .login-form {
-        width: 340px;
+        width: 50%;
         margin: 50px auto;
     }
     .login-form form {
@@ -42,7 +42,7 @@
 {% block body %}
 <div class="container-fluid">
         <div class="row">
-            <div class="col-sm-12 col-md-7">
+            <div class="col-sm-12 col-md-12" style="display:table;margin:auto;">
                 <div class="panel panel-default">
                     <div class="panel-body">
                         <form class="login-form" action="/addlostfound/" enctype="multipart/form-data" method="post">
@@ -81,9 +81,9 @@
                             </div>
                                 <br>
                             <div class="form-group">
-                                <div class="col-sm-offset-2 col-sm-10">
+
                                     <button type="submit" class="btn btn-success">Submit</button>
-                                </div>
+
                             </div>
                         </form>
 
